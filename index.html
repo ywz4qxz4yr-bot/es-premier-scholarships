@@ -15,28 +15,127 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:'Source
 a{text-decoration:none;color:inherit}button{font-family:inherit;cursor:pointer}
 input::placeholder,textarea::placeholder{color:var(--tf)}
 input:focus,textarea:focus{border-color:var(--r)!important;outline:none;box-shadow:0 0 0 3px var(--rl)}
-.fi{width:100%;padding:13px 16px;border-radius:6px;border:1px solid var(--bd);font-size:14px;font-family:inherit;color:var(--text);background:var(--bg);-webkit-appearance:none;transition:border-color .2s}
+.fi{width:100%;padding:13px 16px;border-radius:6px;border:1px solid var(--bd);font-size:14px;font-family:inherit;color:var(--text);background:var(--bg);-webkit-appearance:none;transition:border-color .2s, box-shadow .2s}
 input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}input[type=number]{-moz-appearance:textfield}
 .fl{font-size:10px;font-weight:700;color:var(--td);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px;display:block}
 .c{max-width:1100px;margin:0 auto;padding:0 24px}
-.card{background:#fff;border:1px solid var(--bd);border-radius:10px;transition:border-color .2s,transform .2s,box-shadow .2s}
-.card:hover{border-color:#d4d0c8}.cc{cursor:pointer}.cc:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,.06);border-color:rgba(255,0,36,.15)}
+.card{background:#fff;border:1px solid var(--bd);border-radius:10px;transition:border-color .3s, transform .3s, box-shadow .3s}
+.card:hover{border-color:#d4d0c8}.cc{cursor:pointer}.cc:hover{transform:translateY(-4px);box-shadow:0 10px 30px rgba(0,0,0,.08);border-color:rgba(255,0,36,.25)}
 .hd{font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;line-height:1.05;color:var(--dark)}
 .tag{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--r);margin-bottom:10px}
-.al{width:48px;height:3px;background:var(--r);margin-bottom:16px;border-radius:2px}.alc{margin-left:auto;margin-right:auto}
-.btn{display:inline-block;padding:14px 32px;border-radius:6px;font-size:14px;font-weight:700;font-family:'Barlow Condensed',sans-serif;letter-spacing:1px;text-transform:uppercase;transition:all .2s;border:none;text-align:center}
-.br{background:var(--r);color:#fff}.br:hover{background:var(--rd)}
-.by{background:var(--y);color:var(--dark)}.by:hover{filter:brightness(.92)}
-.bo{background:0 0;color:var(--dark);border:1.5px solid var(--bd)}.bo:hover{border-color:var(--r);color:var(--r)}
+.al{width:48px;height:3px;background:var(--r);margin-bottom:16px;border-radius:2px;position:relative;overflow:hidden}
+.al::after{content:"";position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,#fff,transparent);animation:alshine 3s ease-in-out infinite}
+@keyframes alshine{0%,60%{left:-100%}80%,100%{left:100%}}
+.alc{margin-left:auto;margin-right:auto}
+.btn{display:inline-block;padding:14px 32px;border-radius:6px;font-size:14px;font-weight:700;font-family:'Barlow Condensed',sans-serif;letter-spacing:1px;text-transform:uppercase;transition:all .25s cubic-bezier(.2,.8,.2,1);border:none;text-align:center;position:relative;overflow:hidden}
+.btn::before{content:"";position:absolute;top:0;left:-120%;width:60%;height:100%;background:linear-gradient(120deg,transparent,rgba(255,255,255,.35),transparent);transform:skewX(-20deg);transition:left .6s ease}
+.btn:hover::before{left:140%}
+.br{background:var(--r);color:#fff;box-shadow:0 4px 14px rgba(255,0,36,.25)}.br:hover{background:var(--rd);transform:translateY(-2px);box-shadow:0 8px 22px rgba(255,0,36,.35)}
+.by{background:var(--y);color:var(--dark);box-shadow:0 4px 14px rgba(255,242,0,.35)}.by:hover{filter:brightness(.95);transform:translateY(-2px);box-shadow:0 8px 22px rgba(255,242,0,.45)}
+.bo{background:0 0;color:var(--dark);border:1.5px solid var(--bd)}.bo:hover{border-color:var(--r);color:var(--r);transform:translateY(-2px)}
 .slots{display:flex;align-items:center;gap:8px;width:100%}.strk{flex:1;height:5px;background:var(--bdl);border-radius:5px;overflow:hidden}.sfil{height:100%;background:linear-gradient(90deg,var(--r),var(--y));border-radius:5px;transition:width .6s}.slbl{font-size:11px;color:var(--td);font-weight:600;white-space:nowrap}
 .badge{background:var(--rl);color:var(--r);padding:4px 10px;border-radius:4px;font-size:10px;font-weight:700;letter-spacing:.5px;display:inline-block}
 .tax{display:inline-block;font-size:11px;color:var(--td);margin-top:10px}
-.foot{background:var(--dark);color:rgba(255,255,255,.55)}.foot a,.foot button{color:rgba(255,255,255,.45)}.foot a:hover,.foot button:hover{color:#fff}
-.strip{background:var(--dark);padding:16px 24px;text-align:center;display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap}
-.strip p{color:rgba(255,255,255,.65);font-size:13px;margin:0}
-.hero-logo{flex-shrink:0;position:relative;width:360;height:360;display:flex;align-items:center;justify-content:center}
-.hero-logo .hl-circle{position:relative;width:280px;height:280px}
-.hero-logo .hl-circle img{width:200px;height:200px}
+.foot{background:var(--dark);color:rgba(255,255,255,.55)}.foot a,.foot button{color:rgba(255,255,255,.45);transition:color .2s, transform .2s}.foot a:hover,.foot button:hover{color:#fff;transform:translateX(3px)}
+.strip{background:var(--dark);padding:16px 24px;text-align:center;display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;position:relative;overflow:hidden}
+.strip::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent 0%,var(--r) 25%,var(--y) 50%,var(--r) 75%,transparent 100%);background-size:200% 100%;animation:stripLine 6s linear infinite;opacity:.6}
+@keyframes stripLine{0%{background-position:-200% 0}100%{background-position:200% 0}}
+.strip p{color:rgba(255,255,255,.65);font-size:13px;margin:0;position:relative;z-index:1}
+.strip .btn{position:relative;z-index:1}
+
+/* HERO animations */
+.hero-wrap{position:relative;overflow:hidden}
+.hero-field{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:50px 50px;animation:fieldDrift 40s linear infinite;opacity:.7}
+@keyframes fieldDrift{from{background-position:0 0}to{background-position:50px 50px}}
+.hero-streak{position:absolute;height:2px;background:linear-gradient(90deg,transparent,var(--r),transparent);opacity:0;filter:blur(1px);animation:streak 7s linear infinite}
+.hero-streak.s1{top:22%;width:35%;animation-delay:0s}
+.hero-streak.s2{top:46%;width:50%;animation-delay:2.2s;background:linear-gradient(90deg,transparent,var(--y),transparent)}
+.hero-streak.s3{top:72%;width:40%;animation-delay:4.5s}
+@keyframes streak{0%{left:-40%;opacity:0}15%{opacity:.6}85%{opacity:.6}100%{left:110%;opacity:0}}
+.hero-particle{position:absolute;width:4px;height:4px;border-radius:50%;background:var(--r);opacity:0;animation:particle 6s ease-in-out infinite}
+.hero-particle.p1{top:30%;left:15%;animation-delay:.5s}
+.hero-particle.p2{top:60%;left:80%;background:var(--y);animation-delay:1.8s}
+.hero-particle.p3{top:80%;left:30%;animation-delay:3.2s}
+.hero-particle.p4{top:20%;left:70%;background:var(--y);animation-delay:4s}
+.hero-particle.p5{top:50%;left:50%;animation-delay:5.5s}
+@keyframes particle{0%{opacity:0;transform:translateY(0) scale(.5)}20%{opacity:.8}50%{opacity:.5}100%{opacity:0;transform:translateY(-80px) scale(1.5)}}
+.hero-logo{flex-shrink:0;position:relative;width:380px;height:380px;display:flex;align-items:center;justify-content:center;animation:logoIn 1.2s cubic-bezier(.2,.8,.2,1) both}
+@keyframes logoIn{0%{opacity:0;transform:scale(.7) rotate(-8deg)}100%{opacity:1;transform:scale(1) rotate(0)}}
+.hl-glow{position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle,rgba(255,0,36,.25) 0%,rgba(255,242,0,.12) 40%,transparent 70%);filter:blur(40px);animation:glowPulse 4s ease-in-out infinite}
+@keyframes glowPulse{0%,100%{transform:scale(1);opacity:.9}50%{transform:scale(1.15);opacity:1}}
+.hl-ring{position:absolute;border-radius:50%;border:1.5px solid rgba(255,0,36,.25);animation:ringSpin 20s linear infinite}
+.hl-ring.r1{inset:10px}
+.hl-ring.r2{inset:30px;border-color:rgba(255,242,0,.2);animation-direction:reverse;animation-duration:28s}
+@keyframes ringSpin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+.hl-img{position:relative;width:320px;height:320px;object-fit:contain;filter:drop-shadow(0 8px 40px rgba(255,0,36,.25)) drop-shadow(0 4px 20px rgba(0,0,0,.4));animation:logoFloat 6s ease-in-out infinite}
+@keyframes logoFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+
+/* Scroll reveal */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.2,.8,.2,1), transform .8s cubic-bezier(.2,.8,.2,1)}
+.reveal.in{opacity:1;transform:translateY(0)}
+.reveal-d1{transition-delay:.1s}.reveal-d2{transition-delay:.2s}.reveal-d3{transition-delay:.3s}.reveal-d4{transition-delay:.4s}
+
+/* Staggered hero text reveal */
+.fadeUp{animation:fadeUp .9s cubic-bezier(.2,.8,.2,1) both}
+.fadeUp.d1{animation-delay:.1s}.fadeUp.d2{animation-delay:.22s}.fadeUp.d3{animation-delay:.35s}.fadeUp.d4{animation-delay:.5s}.fadeUp.d5{animation-delay:.65s}.fadeUp.d6{animation-delay:.8s}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+
+/* Counter animation wrap */
+.stat-card{position:relative;overflow:hidden;transition:transform .3s}
+.stat-card:hover{transform:translateY(-3px)}
+.stat-card::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--r),var(--y));transform:scaleX(0);transform-origin:left;transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.stat-card.revealed::before{transform:scaleX(1)}
+
+/* Sports ticker */
+.ticker-wrap{overflow:hidden;padding:8px 0;mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
+.ticker{display:flex;gap:12px;width:max-content;animation:ticker 50s linear infinite}
+.ticker:hover{animation-play-state:paused}
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.sport-pill{padding:10px 20px;background:#fff;border:1px solid var(--bd);border-radius:30px;font-size:13px;font-weight:600;color:var(--tm);white-space:nowrap;transition:all .3s;flex-shrink:0}
+.sport-pill:hover{border-color:var(--r);color:var(--r);transform:translateY(-2px);box-shadow:0 4px 12px rgba(255,0,36,.1)}
+
+/* Live pulse dot */
+.live-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--r);margin-right:8px;position:relative;vertical-align:middle}
+.live-dot::before{content:"";position:absolute;inset:-4px;border-radius:50%;background:var(--r);opacity:.5;animation:livePulse 1.8s ease-out infinite}
+@keyframes livePulse{0%{transform:scale(.8);opacity:.6}100%{transform:scale(2.2);opacity:0}}
+
+/* Donation card hover shine */
+.dcard{position:relative;overflow:hidden}
+.dcard::after{content:"";position:absolute;top:-50%;left:-60%;width:40%;height:200%;background:linear-gradient(115deg,transparent,rgba(255,0,36,.08),transparent);transition:left .7s ease}
+.dcard:hover::after{left:120%}
+
+/* How it works connecting line */
+.how-grid{position:relative}
+.how-line{position:absolute;top:26px;left:10%;right:10%;height:2px;background:linear-gradient(90deg,var(--rl),var(--r),var(--y),var(--r),var(--rl));background-size:200% 100%;animation:howLine 4s linear infinite;z-index:0;opacity:0;transition:opacity 1s}
+.how-grid.in .how-line{opacity:1}
+@keyframes howLine{from{background-position:0 0}to{background-position:200% 0}}
+.how-step{position:relative;z-index:1}
+.how-circle{transition:transform .3s, box-shadow .3s}
+.how-step:hover .how-circle{transform:scale(1.1);box-shadow:0 0 0 6px rgba(255,0,36,.08)}
+
+/* Mission value cards */
+.vcard{position:relative;overflow:hidden;transition:all .3s}
+.vcard::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--r);transform:scaleY(0);transform-origin:top;transition:transform .4s cubic-bezier(.2,.8,.2,1)}
+.vcard:hover{transform:translateX(4px);border-color:var(--r)}
+.vcard:hover::before{transform:scaleY(1)}
+
+/* Golf shootout featured card */
+.golf-card{position:relative;overflow:hidden;transition:transform .4s, box-shadow .4s}
+.golf-card:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(0,0,0,.12)!important}
+.golf-stripe{height:6px;background:linear-gradient(90deg,var(--r),var(--y),var(--r));background-size:200% 100%;animation:stripeMove 4s linear infinite}
+@keyframes stripeMove{from{background-position:0 0}to{background-position:200% 0}}
+
+/* CTA section */
+.cta-box{position:relative;overflow:hidden}
+.cta-box::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--r),var(--y),var(--r),var(--y));background-size:300% 100%;animation:stripeMove 5s linear infinite}
+
+/* Nav link underline */
+.nav-link{position:relative}
+.nav-link::after{content:"";position:absolute;bottom:4px;left:13px;right:13px;height:2px;background:var(--r);transform:scaleX(0);transform-origin:left;transition:transform .3s cubic-bezier(.2,.8,.2,1)}
+.nav-link.active::after,.nav-link:hover::after{transform:scaleX(1)}
+
+.hero-logo{flex-shrink:0;position:relative}
+
 @media(max-width:768px){
 .g2,.g3,.tg,.pg,.hg{grid-template-columns:1fr!important}.sg,.ag{grid-template-columns:1fr!important}
 .fr2,.fr3{grid-template-columns:1fr!important}.fg{grid-template-columns:1fr 1fr!important;gap:24px!important}
@@ -48,11 +147,17 @@ input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-
 .pls{overflow-x:auto;-webkit-overflow-scrolling:touch;flex-wrap:nowrap!important}.pls button{flex-shrink:0;padding:8px 12px!important;font-size:11px!important}
 .schg{grid-template-columns:1fr!important}.es{grid-template-columns:1fr!important}.dg{grid-template-columns:1fr 1fr!important}
 .strip{flex-direction:column;gap:10px}.navl{gap:0!important}.navl button{padding:7px 5px!important;font-size:10px!important}.navd{padding:7px 12px!important;font-size:10px!important;margin-left:3px!important}
+.how-line{display:none}
 }
 @media(max-width:480px){.stg>div{padding:18px 10px!important}.dg{grid-template-columns:1fr!important}.navl button{padding:5px 3px!important;font-size:9px!important}.navd{font-size:9px!important;padding:6px 10px!important}}
 
 .page-logo{float:right;width:200px;height:200px;object-fit:contain;margin-left:20px;margin-bottom:10px}
 @media(max-width:768px){.page-logo{float:none;display:block;width:80px;height:80px;margin:0 auto 12px}}
+
+@media(prefers-reduced-motion:reduce){
+*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+.reveal{opacity:1;transform:none}
+}
 </style>
 </head>
 <body>
@@ -61,7 +166,7 @@ input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.9/babel.min.js"></script>
 <script type="text/babel">
-const{useState,useRef,useCallback}=React;
+const{useState,useRef,useCallback,useEffect}=React;
 const LOGO="images/dbysf-logo.png";
 const LOGO_NAV="images/dbysf-logo.png";
 const hf="'Barlow Condensed',sans-serif";
@@ -71,118 +176,459 @@ const TIERS=[{name:"STARTER",range:"$50-$99",impact:"1 athlete equipped",perks:[
 const SPORTS=["Soccer","Baseball","Basketball","Football","Lacrosse","Field Hockey","Softball","Wrestling","Track & Field","Tennis","Golf","Volleyball","Swimming","Cheerleading","Gymnastics","Hockey"];
 const TYPES=["All",...new Set(SCH.map(s=>s.type))];
 
+/* ============ REVEAL HOOK ============ */
+function useReveal(){
+  const ref=useRef(null);
+  useEffect(()=>{
+    const el=ref.current;if(!el)return;
+    const io=new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");if(e.target.classList.contains("stat-card"))e.target.classList.add("revealed");io.unobserve(e.target)}})
+    },{threshold:.15,rootMargin:"0px 0px -40px 0px"});
+    io.observe(el);
+    return()=>io.disconnect();
+  },[]);
+  return ref;
+}
+
+/* ============ ANIMATED COUNTER ============ */
+function Counter({value,suffix="",duration=1500}){
+  const [display,setDisplay]=useState(0);
+  const ref=useRef(null);
+  const started=useRef(false);
+  useEffect(()=>{
+    const el=ref.current;if(!el)return;
+    const io=new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting && !started.current){
+          started.current=true;
+          const num=parseInt(String(value).replace(/\D/g,""))||0;
+          const start=performance.now();
+          const tick=(now)=>{
+            const t=Math.min(1,(now-start)/duration);
+            const eased=1-Math.pow(1-t,3);
+            setDisplay(Math.floor(eased*num));
+            if(t<1)requestAnimationFrame(tick);
+            else setDisplay(num);
+          };
+          requestAnimationFrame(tick);
+          io.unobserve(el);
+        }
+      });
+    },{threshold:.4});
+    io.observe(el);
+    return()=>io.disconnect();
+  },[value,duration]);
+  return <span ref={ref}>{display}{suffix}</span>;
+}
+
 function SB({f,t}){const p=Math.round(f/t*100);return <div className="slots"><div className="strk"><div className="sfil" style={{width:p+"%"}}/></div><span className="slbl">{t-f} left</span></div>}
 function Tax(){return <div className="tax">501(c)(3) Nonprofit Organization</div>}
 
-function Nav({page,go}){const[open,setOpen]=useState(false);const nav=[{k:"home",l:"Home"},{k:"scholarships",l:"Apply"},{k:"events",l:"Events"},{k:"sponsors",l:"Sponsors"},{k:"about",l:"About"}];const tap=(k)=>{go(k);setOpen(false)};return <><nav style={{borderBottom:"1px solid var(--bd)",background:"var(--bg)",position:"sticky",top:0,zIndex:100}}><div className="c" style={{display:"flex",justifyContent:"space-between",alignItems:"center",height:72}}><button onClick={()=>tap("home")} style={{background:"none",border:"none",padding:0,display:"flex",alignItems:"center",gap:10}}><img src={LOGO_NAV} alt="DB" style={{height:52}}/></button><div className="navl nav-desktop" style={{display:"flex",alignItems:"center",gap:2}}>{nav.map(x=><button key={x.k} onClick={()=>tap(x.k)} style={{background:page===x.k?"var(--rl)":"none",color:page===x.k?"var(--r)":"var(--tm)",border:"none",padding:"8px 13px",borderRadius:4,fontSize:12.5,fontWeight:600}}>{x.l}</button>)}<button className="navd" onClick={()=>window.open("https://buy.stripe.com/cNi00j6Ndd9q9yHez93VC01","_blank")} style={{background:"var(--r)",color:"#fff",border:"none",padding:"9px 20px",borderRadius:6,fontSize:12,fontWeight:700,fontFamily:hf,letterSpacing:1,textTransform:"uppercase",marginLeft:6}}>Donate Now</button></div><div className="nav-mobile-right" style={{display:"none",alignItems:"center",gap:10}}><button onClick={()=>window.open("https://buy.stripe.com/cNi00j6Ndd9q9yHez93VC01","_blank")} style={{background:"var(--r)",color:"#fff",border:"none",padding:"7px 14px",borderRadius:6,fontSize:11,fontWeight:700,fontFamily:hf,letterSpacing:1,textTransform:"uppercase"}}>Donate Now</button><button onClick={()=>setOpen(!open)} style={{background:"none",border:"none",padding:8,cursor:"pointer"}}><div style={{width:24,height:2,background:"var(--dark)",marginBottom:6,borderRadius:2,transition:"all .3s",transform:open?"rotate(45deg) translate(3px,3px)":"none"}}/><div style={{width:24,height:2,background:"var(--dark)",marginBottom:6,borderRadius:2,transition:"all .3s",opacity:open?0:1}}/><div style={{width:24,height:2,background:"var(--dark)",borderRadius:2,transition:"all .3s",transform:open?"rotate(-45deg) translate(3px,-3px)":"none"}}/></button></div></div></nav>{open&&<div style={{position:"fixed",top:72,left:0,right:0,bottom:0,background:"var(--bg)",zIndex:99,display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",gap:8}}>{nav.map(x=><button key={x.k} onClick={()=>tap(x.k)} style={{background:page===x.k?"var(--rl)":"none",color:page===x.k?"var(--r)":"var(--dark)",border:"none",padding:"16px 40px",borderRadius:8,fontSize:20,fontWeight:700,fontFamily:hf,letterSpacing:1,textTransform:"uppercase",width:"80%",maxWidth:320}}>{x.l}</button>)}<button onClick={()=>window.open("https://buy.stripe.com/cNi00j6Ndd9q9yHez93VC01","_blank")} style={{background:"var(--r)",color:"#fff",border:"none",padding:"16px 40px",borderRadius:8,fontSize:20,fontWeight:700,fontFamily:hf,letterSpacing:1,textTransform:"uppercase",width:"80%",maxWidth:320,marginTop:8}}>Donate Now</button></div>}</>}
+function Nav({page,go}){
+  const[open,setOpen]=useState(false);
+  const[scrolled,setScrolled]=useState(false);
+  const nav=[{k:"home",l:"Home"},{k:"scholarships",l:"Apply"},{k:"events",l:"Events"},{k:"sponsors",l:"Sponsors"},{k:"about",l:"About"}];
+  const tap=(k)=>{go(k);setOpen(false)};
+  useEffect(()=>{
+    const onScroll=()=>setScrolled(window.scrollY>20);
+    window.addEventListener("scroll",onScroll,{passive:true});
+    return()=>window.removeEventListener("scroll",onScroll);
+  },[]);
+  return <><nav style={{borderBottom:"1px solid var(--bd)",background:scrolled?"rgba(255,255,255,.92)":"var(--bg)",backdropFilter:scrolled?"blur(10px)":"none",WebkitBackdropFilter:scrolled?"blur(10px)":"none",position:"sticky",top:0,zIndex:100,boxShadow:scrolled?"0 2px 12px rgba(0,0,0,.04)":"none",transition:"all .3s"}}><div className="c" style={{display:"flex",justifyContent:"space-between",alignItems:"center",height:72}}><button onClick={()=>tap("home")} style={{background:"none",border:"none",padding:0,display:"flex",alignItems:"center",gap:10,transition:"transform .2s"}} onMouseEnter={e=>e.currentTarget.style.transform="scale(1.05)"} onMouseLeave={e=>e.currentTarget.style.transform="scale(1)"}><img src={LOGO_NAV} alt="DB" style={{height:52}}/></button><div className="navl nav-desktop" style={{display:"flex",alignItems:"center",gap:2}}>{nav.map(x=><button key={x.k} onClick={()=>tap(x.k)} className={"nav-link "+(page===x.k?"active":"")} style={{background:page===x.k?"var(--rl)":"none",color:page===x.k?"var(--r)":"var(--tm)",border:"none",padding:"8px 13px",borderRadius:4,fontSize:12.5,fontWeight:600,transition:"color .2s, background .2s"}}>{x.l}</button>)}<button className="navd btn" onClick={()=>window.open("https://buy.stripe.com/cNi00j6Ndd9q9yHez93VC01","_blank")} style={{background:"var(--r)",color:"#fff",border:"none",padding:"9px 20px",borderRadius:6,fontSize:12,fontWeight:700,fontFamily:hf,letterSpacing:1,textTransform:"uppercase",marginLeft:6,boxShadow:"0 4px 12px rgba(255,0,36,.25)"}}>Donate Now</button></div><div className="nav-mobile-right" style={{display:"none",alignItems:"center",gap:10}}><button onClick={()=>window.open("https://buy.stripe.com/cNi00j6Ndd9q9yHez93VC01","_blank")} style={{background:"var(--r)",color:"#fff",border:"none",padding:"7px 14px",borderRadius:6,fontSize:11,fontWeight:700,fontFamily:hf,letterSpacing:1,textTransform:"uppercase"}}>Donate Now</button><button onClick={()=>setOpen(!open)} style={{background:"none",border:"none",padding:8,cursor:"pointer"}}><div style={{width:24,height:2,background:"var(--dark)",marginBottom:6,borderRadius:2,transition:"all .3s",transform:open?"rotate(45deg) translate(3px,3px)":"none"}}/><div style={{width:24,height:2,background:"var(--dark)",marginBottom:6,borderRadius:2,transition:"all .3s",opacity:open?0:1}}/><div style={{width:24,height:2,background:"var(--dark)",borderRadius:2,transition:"all .3s",transform:open?"rotate(-45deg) translate(3px,-3px)":"none"}}/></button></div></div></nav>{open&&<div style={{position:"fixed",top:72,left:0,right:0,bottom:0,background:"var(--bg)",zIndex:99,display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",gap:8,animation:"fadeUp .3s ease both"}}>{nav.map((x,i)=><button key={x.k} onClick={()=>tap(x.k)} className="fadeUp" style={{animationDelay:(i*.05)+"s",background:page===x.k?"var(--rl)":"none",color:page===x.k?"var(--r)":"var(--dark)",border:"none",padding:"16px 40px",borderRadius:8,fontSize:20,fontWeight:700,fontFamily:hf,letterSpacing:1,textTransform:"uppercase",width:"80%",maxWidth:320}}>{x.l}</button>)}<button onClick={()=>window.open("https://buy.stripe.com/cNi00j6Ndd9q9yHez93VC01","_blank")} style={{background:"var(--r)",color:"#fff",border:"none",padding:"16px 40px",borderRadius:8,fontSize:20,fontWeight:700,fontFamily:hf,letterSpacing:1,textTransform:"uppercase",width:"80%",maxWidth:320,marginTop:8}}>Donate Now</button></div>}</>
+}
 
 function Strip({go}){return <div className="strip"><p>Every kid deserves the chance to play.</p><button onClick={()=>go("scholarships")} className="btn" style={{background:"#fff",color:"var(--dark)",padding:"8px 18px",fontSize:11,border:"none",borderRadius:6,fontFamily:hf,fontWeight:700,letterSpacing:1,textTransform:"uppercase"}}>Apply</button><button onClick={()=>go("donate")} className="btn br" style={{padding:"8px 18px",fontSize:11}}>Support an Athlete</button></div>}
 
-function Foot({go}){return <footer className="foot"><div className="c fg" style={{paddingTop:48,paddingBottom:20,display:"grid",gridTemplateColumns:"2fr 1fr 1fr",gap:40}}><div><div style={{fontFamily:hf,fontSize:18,fontWeight:800,textTransform:"uppercase",letterSpacing:1,marginBottom:4,color:"#fff"}}>DELMARVA BLAST</div><div style={{color:"var(--r)",fontSize:10,fontWeight:700,letterSpacing:2,marginBottom:12}}>YOUTH SPORTS FOUNDATION</div><p style={{fontSize:13,lineHeight:1.7,maxWidth:280}}>A 501(c)(3) nonprofit providing scholarships for youth athletes across the Delmarva Peninsula.</p></div><div><div style={{color:"var(--y)",fontSize:10,fontWeight:700,letterSpacing:2.5,marginBottom:14}}>NAVIGATE</div>{[["Home","home"],["Apply","scholarships"],["Events","events"],["Sponsors","sponsors"],["Donate","donate"],["About","about"]].map(([l,t])=><button key={t} onClick={()=>go(t)} style={{display:"block",background:"none",border:"none",fontSize:13,fontFamily:"inherit",padding:"3px 0"}}>{l}</button>)}</div><div><div style={{color:"var(--y)",fontSize:10,fontWeight:700,letterSpacing:2.5,marginBottom:14}}>CONTACT</div><div style={{fontSize:13,lineHeight:2}}>Rusty Brown, Executive Director<br/>coachrusty@outlook.com<br/>(410) 713-8174<br/>Salisbury, MD</div></div></div><div className="c" style={{padding:"16px 24px",borderTop:"1px solid rgba(255,255,255,.08)",display:"flex",justifyContent:"space-between",flexWrap:"wrap",gap:8}}><span style={{fontSize:11,color:"rgba(255,255,255,.25)"}}>2026 Delmarva Blast Youth Sports Foundation, Inc.</span><span style={{fontSize:11,color:"rgba(255,255,255,.25)"}}>delmarvablast.org</span></div></footer>}
+function Foot({go}){return <footer className="foot"><div className="c fg" style={{paddingTop:48,paddingBottom:20,display:"grid",gridTemplateColumns:"2fr 1fr 1fr",gap:40}}><div><div style={{fontFamily:hf,fontSize:18,fontWeight:800,textTransform:"uppercase",letterSpacing:1,marginBottom:4,color:"#fff"}}>DELMARVA BLAST</div><div style={{color:"var(--r)",fontSize:10,fontWeight:700,letterSpacing:2,marginBottom:12}}>YOUTH SPORTS FOUNDATION</div><p style={{fontSize:13,lineHeight:1.7,maxWidth:280}}>A 501(c)(3) nonprofit providing scholarships for youth athletes across the Delmarva Peninsula.</p></div><div><div style={{color:"var(--y)",fontSize:10,fontWeight:700,letterSpacing:2.5,marginBottom:14}}>NAVIGATE</div>{[["Home","home"],["Apply","scholarships"],["Events","events"],["Sponsors","sponsors"],["Donate","donate"],["About","about"]].map(([l,t])=><button key={t} onClick={()=>go(t)} style={{display:"block",background:"none",border:"none",fontSize:13,fontFamily:"inherit",padding:"3px 0",textAlign:"left"}}>{l}</button>)}</div><div><div style={{color:"var(--y)",fontSize:10,fontWeight:700,letterSpacing:2.5,marginBottom:14}}>CONTACT</div><div style={{fontSize:13,lineHeight:2}}>Rusty Brown, Executive Director<br/>coachrusty@outlook.com<br/>(410) 713-8174<br/>Salisbury, MD</div></div></div><div className="c" style={{padding:"16px 24px",borderTop:"1px solid rgba(255,255,255,.08)",display:"flex",justifyContent:"space-between",flexWrap:"wrap",gap:8}}><span style={{fontSize:11,color:"rgba(255,255,255,.25)"}}>2026 Delmarva Blast Youth Sports Foundation, Inc.</span><span style={{fontSize:11,color:"rgba(255,255,255,.25)"}}>delmarvablast.org</span></div></footer>}
 
-function Home({go}){return <><div style={{background:"var(--dark)",position:"relative",overflow:"hidden"}}><div style={{position:"absolute",inset:0,background:"radial-gradient(ellipse 70% 70% at 75% 30%,rgba(255,0,36,.12) 0%,transparent 60%),radial-gradient(ellipse 50% 50% at 20% 80%,rgba(255,242,0,.06) 0%,transparent 50%)"}}/>
-<div className="c" style={{position:"relative",zIndex:1,paddingTop:56,paddingBottom:72}}><div className="hg" style={{display:"grid",gridTemplateColumns:"1fr auto",gap:40,alignItems:"center"}}><div><div style={{fontFamily:hf,fontSize:28,fontWeight:900,color:"#fff",letterSpacing:2,textTransform:"uppercase",lineHeight:1.1,marginBottom:2}}>DELMARVA BLAST</div><div style={{fontFamily:hf,fontSize:28,fontWeight:900,color:"#fff",letterSpacing:2,textTransform:"uppercase",lineHeight:1.1,marginBottom:4}}>YOUTH SPORTS FOUNDATION</div><div style={{fontSize:14,fontWeight:600,color:"var(--y)",letterSpacing:3,textTransform:"uppercase",marginBottom:24}}>Scholarship Fund</div><h1 className="hd htl" style={{fontSize:56,marginBottom:18,maxWidth:640,color:"#fff"}}>EVERY KID DESERVES THE CHANCE TO <span style={{color:"var(--y)"}}>PLAY.</span></h1><p style={{color:"rgba(255,255,255,.6)",fontSize:17,lineHeight:1.75,marginBottom:32,maxWidth:500}}>Providing scholarships for youth athletes across Delaware, Maryland, and Virginia's Eastern Shore. All sports. All kids. No barriers.</p><div className="hero-logo-mobile" style={{display:"none"}}><img src={LOGO} alt="Delmarva Blast" style={{width:180,height:180,objectFit:"contain",filter:"drop-shadow(0 8px 30px rgba(255,0,36,.3))",display:"block",margin:"0 auto 24px"}}/></div><div className="cr" style={{display:"flex",gap:12,flexWrap:"wrap"}}><button onClick={()=>go("scholarships")} className="btn br" style={{border:"2px solid #fff"}}>Apply for a Scholarship</button><button onClick={()=>go("donate")} className="btn by" style={{border:"2px solid #fff"}}>Support an Athlete</button><button onClick={()=>go("sponsors")} className="btn" style={{background:"transparent",color:"#fff",border:"2px solid #fff"}}>Become a Sponsor</button></div><div style={{color:"rgba(255,255,255,.45)",fontSize:11,marginTop:10}}>501(c)(3) Nonprofit Organization</div></div><div className="hero-logo" style={{flexShrink:0,position:"relative",width:380,height:380,display:"flex",alignItems:"center",justifyContent:"center"}}><div className="hl-glow" style={{position:"absolute",inset:0,borderRadius:"50%",background:"radial-gradient(circle,rgba(255,0,36,.2) 0%,rgba(255,242,0,.1) 40%,transparent 70%)",filter:"blur(40px)"}}/><img src={LOGO} alt="Delmarva Blast" style={{position:"relative",width:320,height:320,objectFit:"contain",filter:"drop-shadow(0 8px 40px rgba(255,0,36,.25)) drop-shadow(0 4px 20px rgba(0,0,0,.4))"}}/></div></div></div></div>
-<div className="c" style={{marginTop:-24,position:"relative",zIndex:2,marginBottom:56}}><div className="stg" style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",borderRadius:10,overflow:"hidden",boxShadow:"0 4px 20px rgba(0,0,0,.07)"}}>{[{n:"100+",l:"Athletes Supported"},{n:"16",l:"Sports Covered"},{n:"3",l:"States Served"}].map((s,i)=><div key={i} style={{textAlign:"center",padding:"26px 14px",background:"#fff",borderRight:i<2?"1px solid var(--bd)":"none"}}><div style={{fontSize:30,fontWeight:800,color:"var(--r)",fontFamily:hf,lineHeight:1}}>{s.n}</div><div style={{fontSize:10,color:"var(--td)",fontWeight:600,letterSpacing:1.5,textTransform:"uppercase",marginTop:6}}>{s.l}</div></div>)}</div></div>
-<div className="c" style={{paddingBottom:64}}><div className="tag">Our Mission</div><div className="al"/><h2 className="hd" style={{fontSize:34,marginBottom:14,maxWidth:580}}>FINANCIAL CHALLENGES SHOULD NEVER KEEP A CHILD OFF THE FIELD.</h2><p style={{color:"var(--tm)",fontSize:15,lineHeight:1.8,maxWidth:620,marginBottom:32}}>Traditional scholarships help a few with large awards. We give smaller amounts to more families. Twenty kids on the field matters more than one at a showcase.</p><div className="g2" style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:14}}>{[{t:"Access Over Exclusion",d:"Small awards that remove barriers for families who need it most."},{t:"Community-Powered",d:"Every scholarship funded by people who care."},{t:"All Sports, All Kids",d:"Soccer, baseball, basketball, football, lacrosse, field hockey, and more."},{t:"Transparent",d:"70-75% of funds go directly to program services."}].map((v,i)=><div key={i} className="card" style={{padding:22}}><h3 style={{fontSize:15,fontWeight:700,marginBottom:5,color:"var(--r)"}}>{v.t}</h3><p style={{fontSize:13,color:"var(--tm)",lineHeight:1.7,margin:0}}>{v.d}</p></div>)}</div><div style={{marginTop:48}}><div className="tag">Support an Athlete</div><div className="al"/><h2 className="hd" style={{fontSize:28,marginBottom:8,maxWidth:580}}>YOUR SUPPORT MAKES A DIFFERENCE</h2><p style={{color:"var(--tm)",fontSize:14,lineHeight:1.7,maxWidth:580,marginBottom:20}}>Choose an amount that fits you. Every dollar goes toward helping a child play.</p><div className="dg" style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:14,marginBottom:20}}>{[{a:"$25",l:"Hit the Field"},{a:"$50",l:"First Whistle"},{a:"$100",l:"Gear Them Up"},{a:"$175",l:"Join the Team"},{a:"$250",l:"All-Star Support"},{a:"$500+",l:"MVP Impact"}].map((d,i)=><div key={i} className="card cc" onClick={()=>go("donate")} style={{padding:20,textAlign:"center"}}><div style={{fontSize:28,fontWeight:800,color:"var(--r)",fontFamily:hf,marginBottom:3}}>{d.a}</div><div style={{fontSize:12,fontWeight:700}}>{d.l}</div></div>)}</div><div style={{textAlign:"center",marginTop:8}}><button onClick={()=>go("donate")} className="btn br" style={{padding:"12px 32px"}}>Support an Athlete</button></div></div></div>
-<div className="c" style={{paddingBottom:56}}><div className="card" style={{overflow:"hidden",boxShadow:"0 8px 30px rgba(0,0,0,.08)"}}><div style={{height:6,background:"linear-gradient(90deg,var(--r),var(--y))"}}/><img src="images/golf-shootout-banner.jpeg" alt="Delmarva Blast Golf Shootout" style={{width:"100%",height:"auto",display:"block"}}/><div style={{padding:"32px 28px"}}><div className="tag">Upcoming Fundraiser</div><div style={{fontSize:12,fontWeight:700,color:"var(--r)",letterSpacing:2,textTransform:"uppercase",marginTop:-6,marginBottom:16}}>Registration is Open</div><div style={{textAlign:"center",marginBottom:24}}><img src="images/golf-shootout-2026.png" alt="Delmarva Blast Golf Shootout - Saturday May 9, 2026 at Nutters Crossing Golf Course, Salisbury MD - $400 per foursome" style={{width:"100%",maxWidth:380,height:"auto",borderRadius:8,display:"block",margin:"0 auto",boxShadow:"0 4px 20px rgba(0,0,0,.12)"}}/></div><div className="fg" style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:16,marginBottom:16,paddingTop:20,borderTop:"1px solid var(--bd)"}}><div><div className="fl">Date</div><div style={{fontSize:14,fontWeight:700,marginTop:4}}>Sat, May 9, 2026</div></div><div><div className="fl">Time</div><div style={{fontSize:14,fontWeight:700,marginTop:4}}>9:30 AM Shotgun</div></div><div><div className="fl">Entry</div><div style={{fontSize:14,fontWeight:700,marginTop:4}}>$400 per foursome</div></div></div><div style={{marginBottom:24,paddingTop:14,borderTop:"1px solid var(--bdl)"}}><div className="fl">Location</div><div style={{fontSize:14,fontWeight:700,marginTop:4}}>Nutters Crossing Golf Course, Salisbury MD</div></div><div style={{display:"flex",gap:10,flexWrap:"wrap",justifyContent:"center"}}><a href="https://forms.gle/fYx3xKwEiaom4cTQA" target="_blank" rel="noopener noreferrer" className="btn br" style={{padding:"12px 28px",fontSize:13}}>Register a Team</a><a href="https://forms.gle/fYx3xKwEiaom4cTQA" target="_blank" rel="noopener noreferrer" className="btn by" style={{padding:"12px 28px",fontSize:13}}>Sponsor the Event</a><button onClick={()=>go("events")} className="btn bo" style={{padding:"12px 20px",fontSize:12}}>View All Events</button></div></div></div></div>
-<div style={{background:"var(--bgA)",borderTop:"1px solid var(--bd)",borderBottom:"1px solid var(--bd)"}}><div className="c" style={{paddingTop:48,paddingBottom:48,textAlign:"center"}}><div className="tag">Sports We Support</div><div className="al alc"/><h2 className="hd" style={{fontSize:28,marginBottom:24}}>MORE THAN JUST ONE SPORT</h2><div style={{display:"flex",flexWrap:"wrap",justifyContent:"center",gap:8}}>{SPORTS.map((s,i)=><div key={i} style={{padding:"9px 18px",background:"#fff",border:"1px solid var(--bd)",borderRadius:6,fontSize:13,fontWeight:600,color:"var(--tm)"}}>{s}</div>)}</div></div></div>
-<div className="c" style={{paddingTop:56,paddingBottom:56}}><div style={{textAlign:"center",marginBottom:40}}><div className="tag">How It Works</div><div className="al alc"/><h2 className="hd" style={{fontSize:34}}>SIMPLE FOR EVERYONE</h2></div><div className="hg" style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:28}}>{[{s:"01",t:"Apply",d:"Fill out a quick application. No essays, no hoops."},{s:"02",t:"Review",d:"Our team reviews every application within 7 business days."},{s:"03",t:"Play",d:"Funds are sent directly to the sports organization on your behalf."}].map((x,i)=><div key={i} style={{textAlign:"center"}}><div style={{width:52,height:52,borderRadius:"50%",background:"var(--rl)",display:"flex",alignItems:"center",justifyContent:"center",margin:"0 auto 14px",fontSize:16,fontWeight:800,color:"var(--r)",fontFamily:hf}}>{x.s}</div><h3 style={{fontSize:17,fontWeight:800,fontFamily:hf,textTransform:"uppercase",marginBottom:6}}>{x.t}</h3><p style={{color:"var(--tm)",fontSize:13.5,lineHeight:1.7}}>{x.d}</p></div>)}</div></div>
+/* ============ HERO ============ */
+function Hero({go}){
+  return <div className="hero-wrap" style={{background:"var(--dark)"}}>
+    <div className="hero-field"/>
+    <div style={{position:"absolute",inset:0,background:"radial-gradient(ellipse 70% 70% at 75% 30%,rgba(255,0,36,.14) 0%,transparent 60%),radial-gradient(ellipse 50% 50% at 20% 80%,rgba(255,242,0,.08) 0%,transparent 50%)"}}/>
+    <div className="hero-streak s1"/>
+    <div className="hero-streak s2"/>
+    <div className="hero-streak s3"/>
+    <div className="hero-particle p1"/>
+    <div className="hero-particle p2"/>
+    <div className="hero-particle p3"/>
+    <div className="hero-particle p4"/>
+    <div className="hero-particle p5"/>
+    <div className="c" style={{position:"relative",zIndex:1,paddingTop:56,paddingBottom:72}}>
+      <div className="hg" style={{display:"grid",gridTemplateColumns:"1fr auto",gap:40,alignItems:"center"}}>
+        <div>
+          <div className="fadeUp d1" style={{fontFamily:hf,fontSize:28,fontWeight:900,color:"#fff",letterSpacing:2,textTransform:"uppercase",lineHeight:1.1,marginBottom:2}}>DELMARVA BLAST</div>
+          <div className="fadeUp d1" style={{fontFamily:hf,fontSize:28,fontWeight:900,color:"#fff",letterSpacing:2,textTransform:"uppercase",lineHeight:1.1,marginBottom:4}}>YOUTH SPORTS FOUNDATION</div>
+          <div className="fadeUp d2" style={{fontSize:14,fontWeight:600,color:"var(--y)",letterSpacing:3,textTransform:"uppercase",marginBottom:24}}>Scholarship Fund</div>
+          <h1 className="hd htl fadeUp d3" style={{fontSize:56,marginBottom:18,maxWidth:640,color:"#fff"}}>EVERY KID DESERVES THE CHANCE TO <span style={{color:"var(--y)",position:"relative",display:"inline-block"}}>PLAY.<span style={{position:"absolute",left:0,right:0,bottom:-4,height:4,background:"linear-gradient(90deg,var(--r),var(--y))",borderRadius:2,animation:"fadeUp 1s .9s both"}}/></span></h1>
+          <p className="fadeUp d4" style={{color:"rgba(255,255,255,.6)",fontSize:17,lineHeight:1.75,marginBottom:32,maxWidth:500}}>Providing scholarships for youth athletes across Delaware, Maryland, and Virginia's Eastern Shore. All sports. All kids. No barriers.</p>
+          <div className="hero-logo-mobile" style={{display:"none"}}><img src={LOGO} alt="Delmarva Blast" style={{width:180,height:180,objectFit:"contain",filter:"drop-shadow(0 8px 30px rgba(255,0,36,.3))",display:"block",margin:"0 auto 24px"}}/></div>
+          <div className="cr fadeUp d5" style={{display:"flex",gap:12,flexWrap:"wrap"}}>
+            <button onClick={()=>go("scholarships")} className="btn br" style={{border:"2px solid #fff"}}>Apply for a Scholarship</button>
+            <button onClick={()=>go("donate")} className="btn by" style={{border:"2px solid #fff"}}>Support an Athlete</button>
+            <button onClick={()=>go("sponsors")} className="btn" style={{background:"transparent",color:"#fff",border:"2px solid #fff"}}>Become a Sponsor</button>
+          </div>
+          <div className="fadeUp d6" style={{color:"rgba(255,255,255,.45)",fontSize:11,marginTop:10}}>501(c)(3) Nonprofit Organization</div>
+        </div>
+        <div className="hero-logo" style={{width:380,height:380,display:"flex",alignItems:"center",justifyContent:"center"}}>
+          <div className="hl-glow"/>
+          <div className="hl-ring r1"/>
+          <div className="hl-ring r2"/>
+          <img src={LOGO} alt="Delmarva Blast" className="hl-img"/>
+        </div>
+      </div>
+    </div>
+  </div>;
+}
 
+function Home({go}){
+  const statsRef=useReveal();
+  const missionRef=useReveal();
+  const valuesRefs=[useReveal(),useReveal(),useReveal(),useReveal()];
+  const donateRef=useReveal();
+  const golfRef=useReveal();
+  const sportsRef=useReveal();
+  const howRef=useReveal();
+  const howGridRef=useReveal();
+  const storyRef=useReveal();
+  const ctaRef=useReveal();
+  const tickerSports=[...SPORTS,...SPORTS];
+  return <>
+    <Hero go={go}/>
+    <div className="c" style={{marginTop:-24,position:"relative",zIndex:2,marginBottom:56}}>
+      <div ref={statsRef} className="stg reveal" style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",borderRadius:10,overflow:"hidden",boxShadow:"0 4px 20px rgba(0,0,0,.07)"}}>
+        {[{n:100,s:"+",l:"Athletes Supported"},{n:16,s:"",l:"Sports Covered"},{n:3,s:"",l:"States Served"}].map((s,i)=><div key={i} className="stat-card" style={{textAlign:"center",padding:"26px 14px",background:"#fff",borderRight:i<2?"1px solid var(--bd)":"none"}}><div style={{fontSize:30,fontWeight:800,color:"var(--r)",fontFamily:hf,lineHeight:1}}><Counter value={s.n} suffix={s.s}/></div><div style={{fontSize:10,color:"var(--td)",fontWeight:600,letterSpacing:1.5,textTransform:"uppercase",marginTop:6}}>{s.l}</div></div>)}
+      </div>
+    </div>
+    <div className="c" style={{paddingBottom:64}}>
+      <div ref={missionRef} className="reveal"><div className="tag">Our Mission</div><div className="al"/><h2 className="hd" style={{fontSize:34,marginBottom:14,maxWidth:580}}>FINANCIAL CHALLENGES SHOULD NEVER KEEP A CHILD OFF THE FIELD.</h2><p style={{color:"var(--tm)",fontSize:15,lineHeight:1.8,maxWidth:620,marginBottom:32}}>Traditional scholarships help a few with large awards. We give smaller amounts to more families. Twenty kids on the field matters more than one at a showcase.</p></div>
+      <div className="g2" style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:14}}>{[{t:"Access Over Exclusion",d:"Small awards that remove barriers for families who need it most."},{t:"Community-Powered",d:"Every scholarship funded by people who care."},{t:"All Sports, All Kids",d:"Soccer, baseball, basketball, football, lacrosse, field hockey, and more."},{t:"Transparent",d:"70-75% of funds go directly to program services."}].map((v,i)=><div key={i} ref={valuesRefs[i]} className={"card vcard reveal reveal-d"+(i+1)} style={{padding:22}}><h3 style={{fontSize:15,fontWeight:700,marginBottom:5,color:"var(--r)"}}>{v.t}</h3><p style={{fontSize:13,color:"var(--tm)",lineHeight:1.7,margin:0}}>{v.d}</p></div>)}</div>
+      <div ref={donateRef} className="reveal" style={{marginTop:48}}>
+        <div className="tag">Support an Athlete</div><div className="al"/><h2 className="hd" style={{fontSize:28,marginBottom:8,maxWidth:580}}>YOUR SUPPORT MAKES A DIFFERENCE</h2><p style={{color:"var(--tm)",fontSize:14,lineHeight:1.7,maxWidth:580,marginBottom:20}}>Choose an amount that fits you. Every dollar goes toward helping a child play.</p>
+        <div className="dg" style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:14,marginBottom:20}}>{[{a:"$25",l:"Hit the Field"},{a:"$50",l:"First Whistle"},{a:"$100",l:"Gear Them Up"},{a:"$175",l:"Join the Team"},{a:"$250",l:"All-Star Support"},{a:"$500+",l:"MVP Impact"}].map((d,i)=><div key={i} className="card cc dcard" onClick={()=>go("donate")} style={{padding:20,textAlign:"center"}}><div style={{fontSize:28,fontWeight:800,color:"var(--r)",fontFamily:hf,marginBottom:3}}>{d.a}</div><div style={{fontSize:12,fontWeight:700}}>{d.l}</div></div>)}</div>
+        <div style={{textAlign:"center",marginTop:8}}><button onClick={()=>go("donate")} className="btn br" style={{padding:"12px 32px"}}>Support an Athlete</button></div>
+      </div>
+    </div>
+    <div className="c" style={{paddingBottom:56}}>
+      <div ref={golfRef} className="card golf-card reveal" style={{overflow:"hidden",boxShadow:"0 8px 30px rgba(0,0,0,.08)"}}>
+        <div className="golf-stripe"/>
+        <img src="images/golf-shootout-banner.jpeg" alt="Delmarva Blast Golf Shootout" style={{width:"100%",height:"auto",display:"block"}}/>
+        <div style={{padding:"32px 28px"}}>
+          <div className="tag">Upcoming Fundraiser</div>
+          <div style={{fontSize:12,fontWeight:700,color:"var(--r)",letterSpacing:2,textTransform:"uppercase",marginTop:-6,marginBottom:16,display:"flex",alignItems:"center"}}><span className="live-dot"/>Registration is Open</div>
+          <div style={{textAlign:"center",marginBottom:24}}><img src="images/golf-shootout-2026.png" alt="Delmarva Blast Golf Shootout - Saturday May 9, 2026 at Nutters Crossing Golf Course, Salisbury MD - $400 per foursome" style={{width:"100%",maxWidth:380,height:"auto",borderRadius:8,display:"block",margin:"0 auto",boxShadow:"0 4px 20px rgba(0,0,0,.12)",transition:"transform .5s"}} onMouseEnter={e=>e.currentTarget.style.transform="scale(1.02)"} onMouseLeave={e=>e.currentTarget.style.transform="scale(1)"}/></div>
+          <div className="fg" style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:16,marginBottom:16,paddingTop:20,borderTop:"1px solid var(--bd)"}}><div><div className="fl">Date</div><div style={{fontSize:14,fontWeight:700,marginTop:4}}>Sat, May 9, 2026</div></div><div><div className="fl">Time</div><div style={{fontSize:14,fontWeight:700,marginTop:4}}>9:30 AM Shotgun</div></div><div><div className="fl">Entry</div><div style={{fontSize:14,fontWeight:700,marginTop:4}}>$400 per foursome</div></div></div>
+          <div style={{marginBottom:24,paddingTop:14,borderTop:"1px solid var(--bdl)"}}><div className="fl">Location</div><div style={{fontSize:14,fontWeight:700,marginTop:4}}>Nutters Crossing Golf Course, Salisbury MD</div></div>
+          <div style={{display:"flex",gap:10,flexWrap:"wrap",justifyContent:"center"}}><a href="https://forms.gle/fYx3xKwEiaom4cTQA" target="_blank" rel="noopener noreferrer" className="btn br" style={{padding:"12px 28px",fontSize:13}}>Register a Team</a><a href="https://forms.gle/fYx3xKwEiaom4cTQA" target="_blank" rel="noopener noreferrer" className="btn by" style={{padding:"12px 28px",fontSize:13}}>Sponsor the Event</a><button onClick={()=>go("events")} className="btn bo" style={{padding:"12px 20px",fontSize:12}}>View All Events</button></div>
+        </div>
+      </div>
+    </div>
 
-<div style={{background:"var(--bgA)",borderTop:"1px solid var(--bd)",borderBottom:"1px solid var(--bd)"}}><div className="c" style={{paddingTop:56,paddingBottom:56}}><div className="g2" style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:40,alignItems:"center"}}><div><div className="tag">Real Impact</div><div className="al"/><h2 className="hd" style={{fontSize:30,marginBottom:14}}>STORIES FROM THE FIELD</h2><p style={{color:"var(--tm)",fontSize:14,lineHeight:1.75,marginBottom:18}}>Behind every scholarship is a family and a story.</p><button onClick={()=>go("about")} className="btn bo" style={{padding:"10px 22px",fontSize:12}}>More Stories</button></div><div className="card" style={{padding:24,position:"relative"}}><div style={{position:"absolute",top:-1,left:20,right:20,height:3,background:"linear-gradient(90deg,transparent,var(--r),transparent)"}}/><div style={{fontSize:28,color:"var(--tf)",fontFamily:"Georgia,serif",marginBottom:8}}>"</div><p style={{fontSize:14,color:"var(--tm)",lineHeight:1.8,marginBottom:14,fontStyle:"italic"}}>{STR[0].q}</p><div style={{borderTop:"1px solid var(--bd)",paddingTop:10,display:"flex",justifyContent:"space-between"}}><div><div style={{fontSize:14,fontWeight:700}}>{STR[0].name}</div><div style={{fontSize:12,color:"var(--td)"}}>{STR[0].loc}</div></div><div style={{fontSize:11,color:"var(--r)",fontWeight:700}}>{STR[0].sp}</div></div></div></div></div></div>
-<div className="c" style={{paddingTop:56,paddingBottom:56}}><div style={{background:"var(--dark)",borderRadius:12,padding:"48px 40px",textAlign:"center",position:"relative",overflow:"hidden"}}><div style={{position:"absolute",top:0,left:0,right:0,height:4,background:"linear-gradient(90deg,var(--r),var(--y),var(--r))"}}/><h2 className="hd" style={{fontSize:30,marginBottom:12,color:"#fff"}}>READY TO MAKE A DIFFERENCE?</h2><p style={{color:"rgba(255,255,255,.55)",fontSize:14,marginBottom:24,maxWidth:460,marginLeft:"auto",marginRight:"auto"}}>Family, business, or individual -- there is a place for you.</p><div className="cr" style={{display:"flex",gap:12,justifyContent:"center",flexWrap:"wrap"}}><button onClick={()=>go("scholarships")} className="btn br" style={{border:"2px solid #fff"}}>Apply</button><button onClick={()=>go("donate")} className="btn by" style={{border:"2px solid #fff"}}>Support an Athlete</button><button onClick={()=>go("sponsors")} className="btn" style={{background:"transparent",color:"#fff",border:"2px solid #fff"}}>Sponsor</button></div></div></div></>}
+    <div style={{background:"var(--bgA)",borderTop:"1px solid var(--bd)",borderBottom:"1px solid var(--bd)",overflow:"hidden"}}>
+      <div className="c" style={{paddingTop:48,paddingBottom:48,textAlign:"center"}}>
+        <div ref={sportsRef} className="reveal"><div className="tag">Sports We Support</div><div className="al alc"/><h2 className="hd" style={{fontSize:28,marginBottom:24}}>MORE THAN JUST ONE SPORT</h2></div>
+      </div>
+      <div className="ticker-wrap" style={{paddingBottom:48}}>
+        <div className="ticker">{tickerSports.map((s,i)=><div key={i} className="sport-pill">{s}</div>)}</div>
+      </div>
+    </div>
 
-function Scholarships({go}){const[step,setStep]=useState(0);const[sending,setSending]=useState(false);const[err,setErr]=useState("");const[form,setForm]=useState({pn:"",pe:"",pp:"",pa:"",cn:"",cby:"",ca:"",cs:"",csc:"",aReg:false,aUni:false,aShoe:false,aa:"",on:"",oc:"",oe:"",op:"",reason:""});const upd=useCallback((k,v)=>setForm(p=>({...p,[k]:v})),[]);const reset=()=>{setStep(0);setErr("");setForm({pn:"",pe:"",pp:"",pa:"",cn:"",cby:"",ca:"",cs:"",csc:"",aReg:false,aUni:false,aShoe:false,aa:"",on:"",oc:"",oe:"",op:"",reason:""})};
-const submitForm=async()=>{const req=[form.pn,form.pe,form.pp,form.pa,form.cn,form.cby,form.ca,form.cs,form.csc,form.aa,form.on,form.oc,form.oe,form.reason];if(req.some(v=>!v||String(v).trim()==="")){setErr("Please fill out all required fields.");return}if(!form.aReg&&!form.aUni&&!form.aShoe){setErr("Please select at least one type of assistance.");return}setErr("");setSending(true);const assist=[];if(form.aReg)assist.push("League/Season Registration");if(form.aUni)assist.push("Uniform Assistance");if(form.aShoe)assist.push("Shoes/Equipment");try{const res=await fetch("https://api.web3forms.com/submit",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({access_key:"920b074d-603e-4e38-949b-7624e13ab0a3",botcheck:"",subject:"New Scholarship Application - "+form.cn,from_name:"Delmarva Blast YSF Website","Parent/Guardian Name":form.pn,"Parent/Guardian Email":form.pe,"Parent/Guardian Phone":form.pp,"Address":form.pa,"Athlete Name":form.cn,"Birth Year":form.cby,"Current Age":form.ca,"Sport":form.cs,"Current School":form.csc,"Assistance Needed":assist.join(", "),"Amount Requested":"$"+form.aa,"Organization Name":form.on,"Organization Contact":form.oc,"Organization Email":form.oe,"Organization Phone":form.op||"Not provided","Story":form.reason})});const data=await res.json();if(data.success){setStep(1)}else{setErr("Something went wrong. Please try again or email coachrusty@outlook.com directly.")}}catch(e){setErr("Something went wrong. Please try again or email coachrusty@outlook.com directly.")}finally{setSending(false)}};
-if(step===1)return <div className="c" style={{maxWidth:520,paddingTop:56,paddingBottom:100,textAlign:"center"}}><div style={{width:64,height:64,borderRadius:"50%",background:"var(--rl)",display:"flex",alignItems:"center",justifyContent:"center",margin:"0 auto 22px"}}><div style={{width:22,height:11,borderLeft:"3px solid var(--r)",borderBottom:"3px solid var(--r)",transform:"rotate(-45deg)",marginTop:-3}}/></div><h2 className="hd" style={{fontSize:28,marginBottom:12}}>APPLICATION SUBMITTED</h2><p style={{color:"var(--tm)",fontSize:15,lineHeight:1.7,marginBottom:12}}>Thank you for applying to the Delmarva Blast Youth Sports Foundation. We will review your application and be in touch within 7 business days.</p><p style={{color:"var(--td)",fontSize:13,marginBottom:28}}>All information is kept strictly confidential.</p><button onClick={reset} className="btn br">Back to Home</button></div>;
-return <div className="c" style={{paddingTop:8,paddingBottom:56}}>
-<div style={{background:"var(--dark)",position:"relative",overflow:"hidden",marginLeft:"calc(50% - 50vw)",marginRight:"calc(50% - 50vw)",marginTop:-8,marginBottom:40}}><div style={{position:"absolute",inset:0,background:"radial-gradient(ellipse 70% 70% at 75% 30%,rgba(255,0,36,.12) 0%,transparent 60%),radial-gradient(ellipse 50% 50% at 20% 80%,rgba(255,242,0,.06) 0%,transparent 50%)"}}/><div style={{maxWidth:1200,margin:"0 auto",padding:"44px 16px 52px",position:"relative",zIndex:1}}><div className="hg" style={{display:"grid",gridTemplateColumns:"1fr auto",gap:40,alignItems:"center"}}><div><div style={{fontSize:11,fontWeight:700,color:"var(--y)",letterSpacing:3,textTransform:"uppercase",marginBottom:14}}>Get Involved / Scholarships</div><h1 className="hd htl" style={{fontSize:46,marginBottom:14,maxWidth:560,color:"#fff",lineHeight:1.05}}>APPLY FOR A <span style={{color:"var(--y)"}}>SCHOLARSHIP</span></h1><p style={{color:"rgba(255,255,255,.65)",fontSize:16,lineHeight:1.7,marginBottom:18,maxWidth:520}}>Financial assistance for youth athletes across the Delmarva Peninsula. Fill out the application below and we will review it within 7 business days.</p><div className="hero-logo-mobile" style={{display:"none"}}><img src={LOGO} alt="Delmarva Blast" style={{width:140,height:140,objectFit:"contain",filter:"drop-shadow(0 6px 24px rgba(255,0,36,.25))",display:"block",margin:"0 auto 20px"}}/></div><div style={{color:"rgba(255,255,255,.45)",fontSize:11}}>501(c)(3) Nonprofit Organization</div></div><div className="hero-logo" style={{flexShrink:0,position:"relative",width:220,height:220,display:"flex",alignItems:"center",justifyContent:"center"}}><div style={{position:"absolute",inset:0,borderRadius:"50%",background:"radial-gradient(circle,rgba(255,0,36,.18) 0%,rgba(255,242,0,.08) 40%,transparent 70%)",filter:"blur(30px)"}}/><img src={LOGO} alt="Delmarva Blast" style={{position:"relative",width:200,height:200,objectFit:"contain",filter:"drop-shadow(0 6px 30px rgba(255,0,36,.25)) drop-shadow(0 4px 15px rgba(0,0,0,.4))"}}/></div></div></div></div>
-<div className="card" style={{overflow:"hidden",maxWidth:680}}><div style={{height:4,background:"linear-gradient(90deg,var(--r),var(--y))"}}/><div style={{padding:32}}>
-<div style={{display:"flex",flexDirection:"column",gap:18}}>
+    <div className="c" style={{paddingTop:56,paddingBottom:56}}>
+      <div ref={howRef} className="reveal" style={{textAlign:"center",marginBottom:40}}><div className="tag">How It Works</div><div className="al alc"/><h2 className="hd" style={{fontSize:34}}>SIMPLE FOR EVERYONE</h2></div>
+      <div ref={howGridRef} className="hg how-grid" style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:28,position:"relative"}}>
+        <div className="how-line"/>
+        {[{s:"01",t:"Apply",d:"Fill out a quick application. No essays, no hoops."},{s:"02",t:"Review",d:"Our team reviews every application within 7 business days."},{s:"03",t:"Play",d:"Funds are sent directly to the sports organization on your behalf."}].map((x,i)=><div key={i} className="how-step" style={{textAlign:"center"}}>
+          <div className="how-circle" style={{width:52,height:52,borderRadius:"50%",background:"#fff",display:"flex",alignItems:"center",justifyContent:"center",margin:"0 auto 14px",fontSize:16,fontWeight:800,color:"var(--r)",fontFamily:hf,border:"2px solid var(--r)",boxShadow:"0 0 0 3px rgba(255,0,36,.08)"}}>{x.s}</div>
+          <h3 style={{fontSize:17,fontWeight:800,fontFamily:hf,textTransform:"uppercase",marginBottom:6}}>{x.t}</h3>
+          <p style={{color:"var(--tm)",fontSize:13.5,lineHeight:1.7}}>{x.d}</p>
+        </div>)}
+      </div>
+    </div>
 
-<div style={{fontSize:11,fontWeight:700,color:"var(--r)",letterSpacing:2,textTransform:"uppercase",paddingBottom:6,borderBottom:"1px solid var(--bd)"}}>Parent / Guardian Information</div>
-<div><label className="fl">Full Name *</label><input className="fi" value={form.pn} onChange={e=>upd("pn",e.target.value)} placeholder="Jane Smith"/></div>
-<div className="fr2" style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:12}}><div><label className="fl">Email *</label><input className="fi" type="email" value={form.pe} onChange={e=>upd("pe",e.target.value)} placeholder="jane@email.com"/></div><div><label className="fl">Phone *</label><input className="fi" type="tel" value={form.pp} onChange={e=>upd("pp",e.target.value)} placeholder="(410) 555-0123"/></div></div>
-<div><label className="fl">Address (City, State) *</label><input className="fi" value={form.pa} onChange={e=>upd("pa",e.target.value)} placeholder="Salisbury, MD"/></div>
+    <div style={{background:"var(--bgA)",borderTop:"1px solid var(--bd)",borderBottom:"1px solid var(--bd)"}}>
+      <div className="c" style={{paddingTop:56,paddingBottom:56}}>
+        <div ref={storyRef} className="g2 reveal" style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:40,alignItems:"center"}}>
+          <div><div className="tag">Real Impact</div><div className="al"/><h2 className="hd" style={{fontSize:30,marginBottom:14}}>STORIES FROM THE FIELD</h2><p style={{color:"var(--tm)",fontSize:14,lineHeight:1.75,marginBottom:18}}>Behind every scholarship is a family and a story.</p><button onClick={()=>go("about")} className="btn bo" style={{padding:"10px 22px",fontSize:12}}>More Stories</button></div>
+          <div className="card" style={{padding:24,position:"relative",transition:"transform .3s"}} onMouseEnter={e=>e.currentTarget.style.transform="translateY(-4px)"} onMouseLeave={e=>e.currentTarget.style.transform="translateY(0)"}>
+            <div style={{position:"absolute",top:-1,left:20,right:20,height:3,background:"linear-gradient(90deg,transparent,var(--r),transparent)"}}/>
+            <div style={{fontSize:28,color:"var(--tf)",fontFamily:"Georgia,serif",marginBottom:8}}>"</div>
+            <p style={{fontSize:14,color:"var(--tm)",lineHeight:1.8,marginBottom:14,fontStyle:"italic"}}>{STR[0].q}</p>
+            <div style={{borderTop:"1px solid var(--bd)",paddingTop:10,display:"flex",justifyContent:"space-between"}}><div><div style={{fontSize:14,fontWeight:700}}>{STR[0].name}</div><div style={{fontSize:12,color:"var(--td)"}}>{STR[0].loc}</div></div><div style={{fontSize:11,color:"var(--r)",fontWeight:700}}>{STR[0].sp}</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-<div style={{fontSize:11,fontWeight:700,color:"var(--r)",letterSpacing:2,textTransform:"uppercase",paddingBottom:6,borderBottom:"1px solid var(--bd)",marginTop:8}}>Athlete Information</div>
-<div><label className="fl">Athlete Name *</label><input className="fi" value={form.cn} onChange={e=>upd("cn",e.target.value)} placeholder="Alex Smith"/></div>
-<div className="fr3" style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:12}}><div><label className="fl">Birth Year *</label><input className="fi" type="number" value={form.cby} onChange={e=>upd("cby",e.target.value)} placeholder="2015"/></div><div><label className="fl">Current Age *</label><input className="fi" type="number" value={form.ca} onChange={e=>upd("ca",e.target.value)} placeholder="10"/></div><div><label className="fl">Sport *</label><input className="fi" value={form.cs} onChange={e=>upd("cs",e.target.value)} placeholder="Soccer"/></div></div>
-<div><label className="fl">Current School Attending *</label><input className="fi" value={form.csc} onChange={e=>upd("csc",e.target.value)} placeholder="Salisbury Middle School"/></div>
+    <div className="c" style={{paddingTop:56,paddingBottom:56}}>
+      <div ref={ctaRef} className="cta-box reveal" style={{background:"var(--dark)",borderRadius:12,padding:"48px 40px",textAlign:"center",position:"relative",overflow:"hidden"}}>
+        <h2 className="hd" style={{fontSize:30,marginBottom:12,color:"#fff"}}>READY TO MAKE A DIFFERENCE?</h2>
+        <p style={{color:"rgba(255,255,255,.55)",fontSize:14,marginBottom:24,maxWidth:460,marginLeft:"auto",marginRight:"auto"}}>Family, business, or individual -- there is a place for you.</p>
+        <div className="cr" style={{display:"flex",gap:12,justifyContent:"center",flexWrap:"wrap"}}><button onClick={()=>go("scholarships")} className="btn br" style={{border:"2px solid #fff"}}>Apply</button><button onClick={()=>go("donate")} className="btn by" style={{border:"2px solid #fff"}}>Support an Athlete</button><button onClick={()=>go("sponsors")} className="btn" style={{background:"transparent",color:"#fff",border:"2px solid #fff"}}>Sponsor</button></div>
+      </div>
+    </div>
+  </>;
+}
 
-<div style={{fontSize:11,fontWeight:700,color:"var(--r)",letterSpacing:2,textTransform:"uppercase",paddingBottom:6,borderBottom:"1px solid var(--bd)",marginTop:8}}>Assistance Needed</div>
-<div><label className="fl">Type of Assistance (select all that apply) *</label>
-<div style={{display:"flex",flexDirection:"column",gap:10,marginTop:6}}>
-{[{k:"aReg",l:"League / Season Registration"},{k:"aUni",l:"Uniform Assistance"},{k:"aShoe",l:"Shoes / Equipment"}].map(cb=><label key={cb.k} style={{display:"flex",alignItems:"center",gap:8,fontSize:14,color:"var(--text)",cursor:"pointer"}}><input type="checkbox" checked={form[cb.k]} onChange={e=>upd(cb.k,e.target.checked)} style={{width:18,height:18,accentColor:"var(--r)",cursor:"pointer"}}/>{cb.l}</label>)}
-</div></div>
-<div><label className="fl">Amount Requested ($) *</label><input className="fi" type="number" value={form.aa} onChange={e=>upd("aa",e.target.value)} placeholder="150"/></div>
+/* ============ SUB-PAGE HERO (shared pattern) ============ */
+function PageHero({eyebrow,title,titleHi,subtitle}){
+  return <div className="hero-wrap" style={{background:"var(--dark)",position:"relative",overflow:"hidden",marginLeft:"calc(50% - 50vw)",marginRight:"calc(50% - 50vw)",marginTop:-8,marginBottom:40}}>
+    <div className="hero-field" style={{opacity:.5}}/>
+    <div style={{position:"absolute",inset:0,background:"radial-gradient(ellipse 70% 70% at 75% 30%,rgba(255,0,36,.12) 0%,transparent 60%),radial-gradient(ellipse 50% 50% at 20% 80%,rgba(255,242,0,.06) 0%,transparent 50%)"}}/>
+    <div className="hero-streak s1"/>
+    <div className="hero-streak s2"/>
+    <div style={{maxWidth:1200,margin:"0 auto",padding:"44px 16px 52px",position:"relative",zIndex:1}}>
+      <div className="hg" style={{display:"grid",gridTemplateColumns:"1fr auto",gap:40,alignItems:"center"}}>
+        <div>
+          <div className="fadeUp d1" style={{fontSize:11,fontWeight:700,color:"var(--y)",letterSpacing:3,textTransform:"uppercase",marginBottom:14}}>{eyebrow}</div>
+          <h1 className="hd htl fadeUp d2" style={{fontSize:46,marginBottom:14,maxWidth:560,color:"#fff",lineHeight:1.05}}>{title} <span style={{color:"var(--y)"}}>{titleHi}</span></h1>
+          <p className="fadeUp d3" style={{color:"rgba(255,255,255,.65)",fontSize:16,lineHeight:1.7,marginBottom:18,maxWidth:520}}>{subtitle}</p>
+          <div className="hero-logo-mobile" style={{display:"none"}}><img src={LOGO} alt="Delmarva Blast" style={{width:140,height:140,objectFit:"contain",filter:"drop-shadow(0 6px 24px rgba(255,0,36,.25))",display:"block",margin:"0 auto 20px"}}/></div>
+          <div className="fadeUp d4" style={{color:"rgba(255,255,255,.45)",fontSize:11}}>501(c)(3) Nonprofit Organization</div>
+        </div>
+        <div className="hero-logo" style={{width:220,height:220,display:"flex",alignItems:"center",justifyContent:"center"}}>
+          <div className="hl-glow"/>
+          <div className="hl-ring r1"/>
+          <img src={LOGO} alt="Delmarva Blast" className="hl-img" style={{width:200,height:200}}/>
+        </div>
+      </div>
+    </div>
+  </div>;
+}
 
-<div style={{fontSize:11,fontWeight:700,color:"var(--r)",letterSpacing:2,textTransform:"uppercase",paddingBottom:6,borderBottom:"1px solid var(--bd)",marginTop:8}}>Organization to Receive Payment</div>
-<p style={{fontSize:12,color:"var(--td)",lineHeight:1.6,margin:0}}>If approved, the Delmarva Blast Youth Sports Foundation pays the organization directly on your behalf.</p>
-<div className="fr2" style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:12}}><div><label className="fl">Organization Name *</label><input className="fi" value={form.on} onChange={e=>upd("on",e.target.value)} placeholder="Salisbury Youth Soccer League"/></div><div><label className="fl">Contact Person *</label><input className="fi" value={form.oc} onChange={e=>upd("oc",e.target.value)} placeholder="John Doe, Registrar"/></div></div>
-<div className="fr2" style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:12}}><div><label className="fl">Organization Email *</label><input className="fi" type="email" value={form.oe} onChange={e=>upd("oe",e.target.value)} placeholder="info@league.com"/></div><div><label className="fl">Organization Phone</label><input className="fi" type="tel" value={form.op} onChange={e=>upd("op",e.target.value)} placeholder="(410) 555-0000"/></div></div>
+function Scholarships({go}){
+  const[step,setStep]=useState(0);const[sending,setSending]=useState(false);const[err,setErr]=useState("");
+  const[form,setForm]=useState({pn:"",pe:"",pp:"",pa:"",cn:"",cby:"",ca:"",cs:"",csc:"",aReg:false,aUni:false,aShoe:false,aa:"",on:"",oc:"",oe:"",op:"",reason:""});
+  const upd=useCallback((k,v)=>setForm(p=>({...p,[k]:v})),[]);
+  const reset=()=>{setStep(0);setErr("");setForm({pn:"",pe:"",pp:"",pa:"",cn:"",cby:"",ca:"",cs:"",csc:"",aReg:false,aUni:false,aShoe:false,aa:"",on:"",oc:"",oe:"",op:"",reason:""})};
+  const submitForm=async()=>{
+    const req=[form.pn,form.pe,form.pp,form.pa,form.cn,form.cby,form.ca,form.cs,form.csc,form.aa,form.on,form.oc,form.oe,form.reason];
+    if(req.some(v=>!v||String(v).trim()==="")){setErr("Please fill out all required fields.");return}
+    if(!form.aReg&&!form.aUni&&!form.aShoe){setErr("Please select at least one type of assistance.");return}
+    setErr("");setSending(true);
+    const assist=[];if(form.aReg)assist.push("League/Season Registration");if(form.aUni)assist.push("Uniform Assistance");if(form.aShoe)assist.push("Shoes/Equipment");
+    try{
+      const res=await fetch("https://api.web3forms.com/submit",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({access_key:"920b074d-603e-4e38-949b-7624e13ab0a3",botcheck:"",subject:"New Scholarship Application - "+form.cn,from_name:"Delmarva Blast YSF Website","Parent/Guardian Name":form.pn,"Parent/Guardian Email":form.pe,"Parent/Guardian Phone":form.pp,"Address":form.pa,"Athlete Name":form.cn,"Birth Year":form.cby,"Current Age":form.ca,"Sport":form.cs,"Current School":form.csc,"Assistance Needed":assist.join(", "),"Amount Requested":"$"+form.aa,"Organization Name":form.on,"Organization Contact":form.oc,"Organization Email":form.oe,"Organization Phone":form.op||"Not provided","Story":form.reason})});
+      const data=await res.json();
+      if(data.success){setStep(1)}else{setErr("Something went wrong. Please try again or email coachrusty@outlook.com directly.")}
+    }catch(e){setErr("Something went wrong. Please try again or email coachrusty@outlook.com directly.")}
+    finally{setSending(false)}
+  };
+  if(step===1)return <div className="c" style={{maxWidth:520,paddingTop:56,paddingBottom:100,textAlign:"center",animation:"fadeUp .6s both"}}>
+    <div style={{width:64,height:64,borderRadius:"50%",background:"var(--rl)",display:"flex",alignItems:"center",justifyContent:"center",margin:"0 auto 22px",animation:"glowPulse 2s ease-in-out infinite"}}><div style={{width:22,height:11,borderLeft:"3px solid var(--r)",borderBottom:"3px solid var(--r)",transform:"rotate(-45deg)",marginTop:-3}}/></div>
+    <h2 className="hd" style={{fontSize:28,marginBottom:12}}>APPLICATION SUBMITTED</h2>
+    <p style={{color:"var(--tm)",fontSize:15,lineHeight:1.7,marginBottom:12}}>Thank you for applying to the Delmarva Blast Youth Sports Foundation. We will review your application and be in touch within 7 business days.</p>
+    <p style={{color:"var(--td)",fontSize:13,marginBottom:28}}>All information is kept strictly confidential.</p>
+    <button onClick={reset} className="btn br">Back to Home</button>
+  </div>;
+  return <div className="c" style={{paddingTop:8,paddingBottom:56}}>
+    <PageHero eyebrow="Get Involved / Scholarships" title="APPLY FOR A" titleHi="SCHOLARSHIP" subtitle="Financial assistance for youth athletes across the Delmarva Peninsula. Fill out the application below and we will review it within 7 business days."/>
+    <div className="card reveal in" style={{overflow:"hidden",maxWidth:680,opacity:1,transform:"none",animation:"fadeUp .6s .2s both"}}>
+      <div className="golf-stripe" style={{height:4}}/>
+      <div style={{padding:32}}>
+        <div style={{display:"flex",flexDirection:"column",gap:18}}>
 
-<div style={{fontSize:11,fontWeight:700,color:"var(--r)",letterSpacing:2,textTransform:"uppercase",paddingBottom:6,borderBottom:"1px solid var(--bd)",marginTop:8}}>Your Story</div>
-<div><label className="fl">Tell us why your family needs assistance and how this would help your athlete *</label><textarea className="fi" style={{minHeight:100,resize:"vertical"}} value={form.reason} onChange={e=>upd("reason",e.target.value)} placeholder="Share a bit about your family's situation and what playing this sport means to your child..."/></div>
+          <div style={{fontSize:11,fontWeight:700,color:"var(--r)",letterSpacing:2,textTransform:"uppercase",paddingBottom:6,borderBottom:"1px solid var(--bd)"}}>Parent / Guardian Information</div>
+          <div><label className="fl">Full Name *</label><input className="fi" value={form.pn} onChange={e=>upd("pn",e.target.value)} placeholder="Jane Smith"/></div>
+          <div className="fr2" style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:12}}><div><label className="fl">Email *</label><input className="fi" type="email" value={form.pe} onChange={e=>upd("pe",e.target.value)} placeholder="jane@email.com"/></div><div><label className="fl">Phone *</label><input className="fi" type="tel" value={form.pp} onChange={e=>upd("pp",e.target.value)} placeholder="(410) 555-0123"/></div></div>
+          <div><label className="fl">Address (City, State) *</label><input className="fi" value={form.pa} onChange={e=>upd("pa",e.target.value)} placeholder="Salisbury, MD"/></div>
 
-<div style={{background:"var(--bgA)",border:"1px solid var(--bd)",borderRadius:6,padding:14,fontSize:12,color:"var(--td)",lineHeight:1.65}}>Applications are reviewed on a rolling basis. You will hear back within 7 business days. All information is kept strictly confidential. The Delmarva Blast Youth Sports Foundation is a 501(c)(3) nonprofit organization.</div>
-{err&&<div style={{background:"rgba(255,0,36,.06)",border:"1px solid rgba(255,0,36,.2)",borderRadius:6,padding:12,fontSize:13,color:"var(--r)",fontWeight:600}}>{err}</div>}
-<button onClick={submitForm} disabled={sending} className="btn br" style={{width:"100%",padding:"15px",opacity:sending?.6:1,cursor:sending?"not-allowed":"pointer"}}>{sending?"Submitting...":"Submit Application"}</button>
-</div></div></div></div>}
+          <div style={{fontSize:11,fontWeight:700,color:"var(--r)",letterSpacing:2,textTransform:"uppercase",paddingBottom:6,borderBottom:"1px solid var(--bd)",marginTop:8}}>Athlete Information</div>
+          <div><label className="fl">Athlete Name *</label><input className="fi" value={form.cn} onChange={e=>upd("cn",e.target.value)} placeholder="Alex Smith"/></div>
+          <div className="fr3" style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:12}}><div><label className="fl">Birth Year *</label><input className="fi" type="number" value={form.cby} onChange={e=>upd("cby",e.target.value)} placeholder="2015"/></div><div><label className="fl">Current Age *</label><input className="fi" type="number" value={form.ca} onChange={e=>upd("ca",e.target.value)} placeholder="10"/></div><div><label className="fl">Sport *</label><input className="fi" value={form.cs} onChange={e=>upd("cs",e.target.value)} placeholder="Soccer"/></div></div>
+          <div><label className="fl">Current School Attending *</label><input className="fi" value={form.csc} onChange={e=>upd("csc",e.target.value)} placeholder="Salisbury Middle School"/></div>
 
-function Events({go}){return <div className="c" style={{paddingTop:8,paddingBottom:56}}><div style={{background:"var(--dark)",position:"relative",overflow:"hidden",marginLeft:"calc(50% - 50vw)",marginRight:"calc(50% - 50vw)",marginTop:-8,marginBottom:40}}><div style={{position:"absolute",inset:0,background:"radial-gradient(ellipse 70% 70% at 75% 30%,rgba(255,0,36,.12) 0%,transparent 60%),radial-gradient(ellipse 50% 50% at 20% 80%,rgba(255,242,0,.06) 0%,transparent 50%)"}}/><div style={{maxWidth:1200,margin:"0 auto",padding:"44px 16px 52px",position:"relative",zIndex:1}}><div className="hg" style={{display:"grid",gridTemplateColumns:"1fr auto",gap:40,alignItems:"center"}}><div><div style={{fontSize:11,fontWeight:700,color:"var(--y)",letterSpacing:3,textTransform:"uppercase",marginBottom:14}}>Get Involved / Events</div><h1 className="hd htl" style={{fontSize:46,marginBottom:14,maxWidth:560,color:"#fff",lineHeight:1.05}}>FUNDRAISING <span style={{color:"var(--y)"}}>EVENTS</span></h1><p style={{color:"rgba(255,255,255,.65)",fontSize:16,lineHeight:1.7,marginBottom:18,maxWidth:520}}>Every dollar raised goes directly to youth athletes across the Delmarva Peninsula. Join us, sponsor a tournament, or register a team.</p><div className="hero-logo-mobile" style={{display:"none"}}><img src={LOGO} alt="Delmarva Blast" style={{width:140,height:140,objectFit:"contain",filter:"drop-shadow(0 6px 24px rgba(255,0,36,.25))",display:"block",margin:"0 auto 20px"}}/></div><div style={{color:"rgba(255,255,255,.45)",fontSize:11}}>501(c)(3) Nonprofit Organization</div></div><div className="hero-logo" style={{flexShrink:0,position:"relative",width:220,height:220,display:"flex",alignItems:"center",justifyContent:"center"}}><div style={{position:"absolute",inset:0,borderRadius:"50%",background:"radial-gradient(circle,rgba(255,0,36,.18) 0%,rgba(255,242,0,.08) 40%,transparent 70%)",filter:"blur(30px)"}}/><img src={LOGO} alt="Delmarva Blast" style={{position:"relative",width:200,height:200,objectFit:"contain",filter:"drop-shadow(0 6px 30px rgba(255,0,36,.25)) drop-shadow(0 4px 15px rgba(0,0,0,.4))"}}/></div></div></div></div><div className="card" style={{overflow:"hidden",marginBottom:32,boxShadow:"0 8px 30px rgba(0,0,0,.08)"}}><div style={{height:6,background:"linear-gradient(90deg,var(--r),var(--y))"}}/><img src="images/golf-shootout-banner.jpeg" alt="Delmarva Blast Golf Shootout" style={{width:"100%",height:"auto",display:"block"}}/><div style={{padding:"36px 32px"}}><div className="tag">Featured Event</div><div style={{fontSize:12,fontWeight:700,color:"var(--r)",letterSpacing:2,textTransform:"uppercase",marginTop:-6,marginBottom:18}}>Registration is Open</div><div style={{textAlign:"center",marginBottom:28}}><img src="images/golf-shootout-2026.png" alt="Delmarva Blast Golf Shootout - Saturday May 9, 2026 at Nutters Crossing Golf Course, Salisbury MD - 9:30 AM Shotgun Start - $400 per foursome - 4-Player Scramble format" style={{width:"100%",maxWidth:420,height:"auto",borderRadius:8,display:"block",margin:"0 auto",boxShadow:"0 4px 20px rgba(0,0,0,.12)"}}/></div><div className="fg" style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:20,marginBottom:20,paddingTop:24,borderTop:"1px solid var(--bd)"}}><div><div className="fl">Date</div><div style={{fontSize:15,fontWeight:700,marginTop:4}}>Saturday, May 9, 2026</div></div><div><div className="fl">Time</div><div style={{fontSize:15,fontWeight:700,marginTop:4}}>9:30 AM Shotgun</div></div><div><div className="fl">Entry Fee</div><div style={{fontSize:15,fontWeight:700,marginTop:4}}>$400 per foursome</div><div style={{fontSize:13,color:"var(--tm)",marginTop:2}}>4-Player Scramble</div></div></div><div style={{marginBottom:28,paddingTop:16,borderTop:"1px solid var(--bdl)"}}><div className="fl">Location</div><div style={{fontSize:15,fontWeight:700,marginTop:4}}>Nutters Crossing Golf Course</div><div style={{fontSize:13,color:"var(--tm)",marginTop:2}}>Salisbury, Maryland</div></div><div style={{display:"flex",gap:12,flexWrap:"wrap",justifyContent:"center"}}><a href="https://forms.gle/fYx3xKwEiaom4cTQA" target="_blank" rel="noopener noreferrer" className="btn br" style={{padding:"14px 32px",fontSize:13}}>Register a Team</a><a href="https://forms.gle/fYx3xKwEiaom4cTQA" target="_blank" rel="noopener noreferrer" className="btn by" style={{padding:"14px 32px",fontSize:13}}>Sponsor the Event</a></div></div></div><div className="card" style={{overflow:"hidden",marginBottom:24}}><div style={{height:4,background:"linear-gradient(90deg,var(--y),var(--r))"}}/><div className="es" style={{display:"grid",gridTemplateColumns:"1fr 1fr"}}><div style={{padding:"28px 24px",borderRight:"1px solid var(--bd)"}}><div className="tag">Fall Event</div><h3 className="hd" style={{fontSize:24,marginBottom:4}}>SOCCTOBER FEST 5V5 TOURNAMENT</h3><div style={{fontSize:13,fontWeight:700,color:"var(--tm)",marginBottom:14}}>Sponsored by Burley Oak Brewery</div><p style={{color:"var(--tm)",fontSize:13,lineHeight:1.7,marginBottom:16}}>5v5 soccer tournament benefiting youth sports scholarships.</p><div style={{display:"flex",gap:8,flexWrap:"wrap"}}><span className="btn" style={{padding:"9px 20px",fontSize:12,background:"#e0e0e0",color:"#888",cursor:"default"}}>Registration Coming Soon</span><span className="btn" style={{padding:"9px 20px",fontSize:12,background:"#e0e0e0",color:"#888",cursor:"default"}}>Sponsorship Details Coming Soon</span></div></div><div style={{padding:"28px 24px",display:"flex",flexDirection:"column",justifyContent:"center",gap:12}}>{[{l:"Date",v:"October 2026"},{l:"Location",v:"Northern Worcester Athletic Complex"},{l:"City",v:"Berlin, Maryland"}].map((d,i)=><div key={i}><div className="fl">{d.l}</div><div style={{fontSize:14,fontWeight:600}}>{d.v}</div></div>)}</div></div></div></div>}
+          <div style={{fontSize:11,fontWeight:700,color:"var(--r)",letterSpacing:2,textTransform:"uppercase",paddingBottom:6,borderBottom:"1px solid var(--bd)",marginTop:8}}>Assistance Needed</div>
+          <div><label className="fl">Type of Assistance (select all that apply) *</label>
+            <div style={{display:"flex",flexDirection:"column",gap:10,marginTop:6}}>
+              {[{k:"aReg",l:"League / Season Registration"},{k:"aUni",l:"Uniform Assistance"},{k:"aShoe",l:"Shoes / Equipment"}].map(cb=><label key={cb.k} style={{display:"flex",alignItems:"center",gap:8,fontSize:14,color:"var(--text)",cursor:"pointer",transition:"color .2s"}} onMouseEnter={e=>e.currentTarget.style.color="var(--r)"} onMouseLeave={e=>e.currentTarget.style.color="var(--text)"}><input type="checkbox" checked={form[cb.k]} onChange={e=>upd(cb.k,e.target.checked)} style={{width:18,height:18,accentColor:"var(--r)",cursor:"pointer"}}/>{cb.l}</label>)}
+            </div>
+          </div>
+          <div><label className="fl">Amount Requested ($) *</label><input className="fi" type="number" value={form.aa} onChange={e=>upd("aa",e.target.value)} placeholder="150"/></div>
 
-function Donate(){return <div className="c" style={{paddingTop:8,paddingBottom:56}}><div style={{background:"var(--dark)",position:"relative",overflow:"hidden",marginLeft:"calc(50% - 50vw)",marginRight:"calc(50% - 50vw)",marginTop:-8,marginBottom:40}}><div style={{position:"absolute",inset:0,background:"radial-gradient(ellipse 70% 70% at 75% 30%,rgba(255,0,36,.12) 0%,transparent 60%),radial-gradient(ellipse 50% 50% at 20% 80%,rgba(255,242,0,.06) 0%,transparent 50%)"}}/><div style={{maxWidth:1200,margin:"0 auto",padding:"44px 16px 52px",position:"relative",zIndex:1}}><div className="hg" style={{display:"grid",gridTemplateColumns:"1fr auto",gap:40,alignItems:"center"}}><div><div style={{fontSize:11,fontWeight:700,color:"var(--y)",letterSpacing:3,textTransform:"uppercase",marginBottom:14}}>Get Involved / Donate</div><h1 className="hd htl" style={{fontSize:46,marginBottom:14,maxWidth:560,color:"#fff",lineHeight:1.05}}>SUPPORT AN <span style={{color:"var(--y)"}}>ATHLETE</span></h1><p style={{color:"rgba(255,255,255,.65)",fontSize:16,lineHeight:1.7,marginBottom:18,maxWidth:520}}>Every dollar goes toward helping a child play. Small awards, smart allocation, big impact across Delaware, Maryland, and Virginia's Eastern Shore.</p><div className="hero-logo-mobile" style={{display:"none"}}><img src={LOGO} alt="Delmarva Blast" style={{width:140,height:140,objectFit:"contain",filter:"drop-shadow(0 6px 24px rgba(255,0,36,.25))",display:"block",margin:"0 auto 20px"}}/></div><div style={{color:"rgba(255,255,255,.45)",fontSize:11}}>501(c)(3) Nonprofit Organization</div></div><div className="hero-logo" style={{flexShrink:0,position:"relative",width:220,height:220,display:"flex",alignItems:"center",justifyContent:"center"}}><div style={{position:"absolute",inset:0,borderRadius:"50%",background:"radial-gradient(circle,rgba(255,0,36,.18) 0%,rgba(255,242,0,.08) 40%,transparent 70%)",filter:"blur(30px)"}}/><img src={LOGO} alt="Delmarva Blast" style={{position:"relative",width:200,height:200,objectFit:"contain",filter:"drop-shadow(0 6px 30px rgba(255,0,36,.25)) drop-shadow(0 4px 15px rgba(0,0,0,.4))"}}/></div></div></div></div><div className="dg" style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:14,marginBottom:32}}>{[{a:"$25",l:"Hit the Field"},{a:"$50",l:"First Whistle"},{a:"$100",l:"Gear Them Up"},{a:"$175",l:"Join the Team"},{a:"$250",l:"All-Star Support"},{a:"$500+",l:"MVP Impact"}].map((d,i)=><div key={i} className="card cc" style={{padding:20,textAlign:"center"}}><div style={{fontSize:28,fontWeight:800,color:"var(--r)",fontFamily:hf,marginBottom:3}}>{d.a}</div><div style={{fontSize:12,fontWeight:700}}>{d.l}</div></div>)}</div><div style={{background:"var(--dark)",borderRadius:10,padding:"40px 32px",textAlign:"center",marginBottom:24}}><h3 className="hd" style={{fontSize:24,marginBottom:8,color:"#fff"}}>READY TO DONATE?</h3><p style={{color:"rgba(255,255,255,.55)",fontSize:13,marginBottom:20}}>Secure online payment powered by Stripe.</p><a href="https://buy.stripe.com/cNi00j6Ndd9q9yHez93VC01" target="_blank" rel="noopener noreferrer" className="btn br" style={{padding:"12px 32px"}}>Donate Now</a><div style={{color:"rgba(255,255,255,.45)",fontSize:11,marginTop:10}}>Contributions may be tax deductible. Consult your tax advisor.</div></div><div className="card" style={{marginBottom:16,padding:"18px 22px",display:"flex",alignItems:"center",gap:20,flexWrap:"wrap"}}><div style={{flex:"0 0 auto"}}><div style={{fontSize:11,fontWeight:700,color:"var(--r)",letterSpacing:2,textTransform:"uppercase",marginBottom:2}}>Pay by Check</div><div style={{fontSize:14,fontWeight:700}}>Alternate Option</div></div><div style={{flex:"1 1 auto",minWidth:220,fontSize:13,color:"var(--tm)",lineHeight:1.6}}>Payable to <strong style={{color:"var(--text)"}}>Delmarva Blast</strong><br/>Mail to <strong style={{color:"var(--text)"}}>PO Box 3368 Ocean City, MD 21842</strong></div></div><div className="card" style={{padding:20}}><h4 style={{fontSize:13,fontWeight:700,color:"var(--r)",marginBottom:8}}>Transparency</h4><p style={{color:"var(--tm)",fontSize:13,lineHeight:1.7}}>70-75% to scholarships. 10-15% administration. 10-15% fundraising.</p></div></div>}
+          <div style={{fontSize:11,fontWeight:700,color:"var(--r)",letterSpacing:2,textTransform:"uppercase",paddingBottom:6,borderBottom:"1px solid var(--bd)",marginTop:8}}>Organization to Receive Payment</div>
+          <p style={{fontSize:12,color:"var(--td)",lineHeight:1.6,margin:0}}>If approved, the Delmarva Blast Youth Sports Foundation pays the organization directly on your behalf.</p>
+          <div className="fr2" style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:12}}><div><label className="fl">Organization Name *</label><input className="fi" value={form.on} onChange={e=>upd("on",e.target.value)} placeholder="Salisbury Youth Soccer League"/></div><div><label className="fl">Contact Person *</label><input className="fi" value={form.oc} onChange={e=>upd("oc",e.target.value)} placeholder="John Doe, Registrar"/></div></div>
+          <div className="fr2" style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:12}}><div><label className="fl">Organization Email *</label><input className="fi" type="email" value={form.oe} onChange={e=>upd("oe",e.target.value)} placeholder="info@league.com"/></div><div><label className="fl">Organization Phone</label><input className="fi" type="tel" value={form.op} onChange={e=>upd("op",e.target.value)} placeholder="(410) 555-0000"/></div></div>
 
-function Sponsors(){return <div className="c" style={{paddingTop:8,paddingBottom:56}}>
-<div style={{background:"var(--dark)",position:"relative",overflow:"hidden",marginLeft:"calc(50% - 50vw)",marginRight:"calc(50% - 50vw)",marginTop:-8,marginBottom:40}}><div style={{position:"absolute",inset:0,background:"radial-gradient(ellipse 70% 70% at 75% 30%,rgba(255,0,36,.12) 0%,transparent 60%),radial-gradient(ellipse 50% 50% at 20% 80%,rgba(255,242,0,.06) 0%,transparent 50%)"}}/><div style={{maxWidth:1200,margin:"0 auto",padding:"44px 16px 52px",position:"relative",zIndex:1}}><div className="hg" style={{display:"grid",gridTemplateColumns:"1fr auto",gap:40,alignItems:"center"}}><div><div style={{fontSize:11,fontWeight:700,color:"var(--y)",letterSpacing:3,textTransform:"uppercase",marginBottom:14}}>Get Involved / Sponsorships</div><h1 className="hd htl" style={{fontSize:46,marginBottom:14,maxWidth:560,color:"#fff",lineHeight:1.05}}>BUSINESS <span style={{color:"var(--y)"}}>SPONSORSHIPS</span></h1><p style={{color:"rgba(255,255,255,.65)",fontSize:16,lineHeight:1.7,marginBottom:18,maxWidth:520}}>Fuel the game for the next generation while putting your business front and center with families, athletes, and events throughout the Delmarva region.</p><div className="hero-logo-mobile" style={{display:"none"}}><img src={LOGO} alt="Delmarva Blast" style={{width:140,height:140,objectFit:"contain",filter:"drop-shadow(0 6px 24px rgba(255,0,36,.25))",display:"block",margin:"0 auto 20px"}}/></div><div style={{color:"rgba(255,255,255,.45)",fontSize:11}}>501(c)(3) Nonprofit Organization</div></div><div className="hero-logo" style={{flexShrink:0,position:"relative",width:220,height:220,display:"flex",alignItems:"center",justifyContent:"center"}}><div style={{position:"absolute",inset:0,borderRadius:"50%",background:"radial-gradient(circle,rgba(255,0,36,.18) 0%,rgba(255,242,0,.08) 40%,transparent 70%)",filter:"blur(30px)"}}/><img src={LOGO} alt="Delmarva Blast" style={{position:"relative",width:200,height:200,objectFit:"contain",filter:"drop-shadow(0 6px 30px rgba(255,0,36,.25)) drop-shadow(0 4px 15px rgba(0,0,0,.4))"}}/></div></div></div></div>
+          <div style={{fontSize:11,fontWeight:700,color:"var(--r)",letterSpacing:2,textTransform:"uppercase",paddingBottom:6,borderBottom:"1px solid var(--bd)",marginTop:8}}>Your Story</div>
+          <div><label className="fl">Tell us why your family needs assistance and how this would help your athlete *</label><textarea className="fi" style={{minHeight:100,resize:"vertical"}} value={form.reason} onChange={e=>upd("reason",e.target.value)} placeholder="Share a bit about your family's situation and what playing this sport means to your child..."/></div>
 
-<div style={{marginBottom:48}}>
-<h2 className="hd" style={{fontSize:24,marginBottom:6}}>BUSINESS SPONSORSHIP PACKAGES</h2>
-<p style={{color:"var(--td)",fontSize:13,marginBottom:20}}>Business sponsorship packages can be tailored to meet your business goals and needs.</p>
-<div className="tg" style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:14,marginBottom:14}}>
-{[
-{name:"PLATINUM",range:"$10,000",color:"#e5e4e2"},
-{name:"GOLD",range:"$5,000",pop:true,color:"var(--y)"},
-{name:"SILVER",range:"$1,000",color:"#c0c0c0"}
-].map((t,i)=>(
-<div key={i} className="card" style={{padding:24,position:"relative",display:"flex",flexDirection:"column",textAlign:"center",border:t.pop?"2px solid var(--r)":"1px solid var(--bd)"}}>
-{t.pop&&<div style={{position:"absolute",top:0,left:0,right:0,height:4,background:"var(--r)",borderRadius:"10px 10px 0 0"}}/>}
-<div style={{fontSize:11,fontWeight:700,color:"var(--r)",letterSpacing:2,marginBottom:8}}>{t.name}</div>
-<div style={{fontSize:32,fontWeight:800,fontFamily:hf,marginBottom:8}}>{t.range}</div>
-<div style={{fontSize:13,color:"var(--td)"}}>Benefits details coming soon</div>
-</div>))}
-</div>
-<div className="schg" style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:14}}>
-{[
-{name:"BRONZE",range:"$500",color:"#cd7f32"},
-{name:"CUSTOM PACKAGE",range:"Contact Us",color:"var(--r)"}
-].map((t,i)=>(
-<div key={i} className="card" style={{padding:24,position:"relative",display:"flex",flexDirection:"column",textAlign:"center"}}>
-<div style={{fontSize:11,fontWeight:700,color:"var(--r)",letterSpacing:2,marginBottom:8}}>{t.name}</div>
-<div style={{fontSize:28,fontWeight:800,fontFamily:hf,marginBottom:8}}>{t.range}</div>
-<div style={{fontSize:13,color:"var(--td)"}}>{i===1?"Let's build something together":"Benefits details coming soon"}</div>
-</div>))}
-</div>
-</div>
+          <div style={{background:"var(--bgA)",border:"1px solid var(--bd)",borderRadius:6,padding:14,fontSize:12,color:"var(--td)",lineHeight:1.65}}>Applications are reviewed on a rolling basis. You will hear back within 7 business days. All information is kept strictly confidential. The Delmarva Blast Youth Sports Foundation is a 501(c)(3) nonprofit organization.</div>
+          {err&&<div style={{background:"rgba(255,0,36,.06)",border:"1px solid rgba(255,0,36,.2)",borderRadius:6,padding:12,fontSize:13,color:"var(--r)",fontWeight:600,animation:"fadeUp .3s both"}}>{err}</div>}
+          <button onClick={submitForm} disabled={sending} className="btn br" style={{width:"100%",padding:"15px",opacity:sending?.6:1,cursor:sending?"not-allowed":"pointer"}}>{sending?"Submitting...":"Submit Application"}</button>
+        </div>
+      </div>
+    </div>
+  </div>;
+}
 
-<div style={{background:"var(--dark)",borderRadius:10,padding:"40px 32px",textAlign:"center",marginBottom:0}}><h3 className="hd" style={{fontSize:24,color:"#fff",marginBottom:8}}>READY TO SPONSOR?</h3><p style={{color:"rgba(255,255,255,.55)",fontSize:13,marginBottom:20,maxWidth:420,marginLeft:"auto",marginRight:"auto"}}>Your sponsorship puts your business in front of families, athletes, and communities while helping kids play the sports they love.</p><a href="mailto:coachrusty@outlook.com?subject=Sponsorship%20Inquiry" className="btn br" style={{padding:"12px 32px"}}>Contact Rusty Brown</a><div style={{color:"rgba(255,255,255,.35)",fontSize:11,marginTop:10}}>coachrusty@outlook.com | (410) 713-8174</div><div style={{marginTop:16,fontSize:12,color:"rgba(255,255,255,.65)",lineHeight:1.6}}><span style={{color:"var(--y)",fontWeight:700,letterSpacing:1.5,textTransform:"uppercase",fontSize:11,marginRight:8}}>Pay by Check:</span>Payable to <strong style={{color:"#fff"}}>Delmarva Blast</strong> &bull; <strong style={{color:"#fff"}}>PO Box 3368 Ocean City, MD 21842</strong></div><div style={{color:"rgba(255,255,255,.45)",fontSize:11,marginTop:16}}>Contributions may be tax deductible. Consult your tax advisor.</div></div><div style={{background:"var(--bgA)",borderRadius:10,padding:"20px 24px",marginTop:24}}>
-<div style={{display:"flex",alignItems:"center",justifyContent:"center",gap:12,marginBottom:14,flexWrap:"wrap"}}><div style={{fontSize:10,fontWeight:700,color:"var(--r)",letterSpacing:2,textTransform:"uppercase"}}>Transparency</div><h3 className="hd" style={{fontSize:16,margin:0}}>WHERE YOUR MONEY GOES</h3></div>
-<div className="g3" style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:10}}>
-{[{p:"70-75%",l:"Direct to Athletes"},{p:"10-15%",l:"Operations"},{p:"10-15%",l:"Growth"}].map((a,i)=>(
-<div key={i} style={{textAlign:"center",padding:"10px 8px",background:"#fff",borderRadius:6,borderTop:"2px solid var(--r)"}}>
-<div style={{fontSize:20,fontWeight:800,color:"var(--r)",fontFamily:hf,lineHeight:1}}>{a.p}</div>
-<div style={{fontSize:11,fontWeight:700,marginTop:3}}>{a.l}</div>
-</div>))}
-</div>
-</div>
-</div>}
+function Events({go}){
+  const featuredRef=useReveal();
+  const fallRef=useReveal();
+  return <div className="c" style={{paddingTop:8,paddingBottom:56}}>
+    <PageHero eyebrow="Get Involved / Events" title="FUNDRAISING" titleHi="EVENTS" subtitle="Every dollar raised goes directly to youth athletes across the Delmarva Peninsula. Join us, sponsor a tournament, or register a team."/>
+    <div ref={featuredRef} className="card golf-card reveal" style={{overflow:"hidden",marginBottom:32,boxShadow:"0 8px 30px rgba(0,0,0,.08)"}}>
+      <div className="golf-stripe"/>
+      <img src="images/golf-shootout-banner.jpeg" alt="Delmarva Blast Golf Shootout" style={{width:"100%",height:"auto",display:"block"}}/>
+      <div style={{padding:"36px 32px"}}>
+        <div className="tag">Featured Event</div>
+        <div style={{fontSize:12,fontWeight:700,color:"var(--r)",letterSpacing:2,textTransform:"uppercase",marginTop:-6,marginBottom:18,display:"flex",alignItems:"center"}}><span className="live-dot"/>Registration is Open</div>
+        <div style={{textAlign:"center",marginBottom:28}}><img src="images/golf-shootout-2026.png" alt="Delmarva Blast Golf Shootout - Saturday May 9, 2026 at Nutters Crossing Golf Course, Salisbury MD - 9:30 AM Shotgun Start - $400 per foursome - 4-Player Scramble format" style={{width:"100%",maxWidth:420,height:"auto",borderRadius:8,display:"block",margin:"0 auto",boxShadow:"0 4px 20px rgba(0,0,0,.12)",transition:"transform .5s"}} onMouseEnter={e=>e.currentTarget.style.transform="scale(1.02)"} onMouseLeave={e=>e.currentTarget.style.transform="scale(1)"}/></div>
+        <div className="fg" style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:20,marginBottom:20,paddingTop:24,borderTop:"1px solid var(--bd)"}}><div><div className="fl">Date</div><div style={{fontSize:15,fontWeight:700,marginTop:4}}>Saturday, May 9, 2026</div></div><div><div className="fl">Time</div><div style={{fontSize:15,fontWeight:700,marginTop:4}}>9:30 AM Shotgun</div></div><div><div className="fl">Entry Fee</div><div style={{fontSize:15,fontWeight:700,marginTop:4}}>$400 per foursome</div><div style={{fontSize:13,color:"var(--tm)",marginTop:2}}>4-Player Scramble</div></div></div>
+        <div style={{marginBottom:28,paddingTop:16,borderTop:"1px solid var(--bdl)"}}><div className="fl">Location</div><div style={{fontSize:15,fontWeight:700,marginTop:4}}>Nutters Crossing Golf Course</div><div style={{fontSize:13,color:"var(--tm)",marginTop:2}}>Salisbury, Maryland</div></div>
+        <div style={{display:"flex",gap:12,flexWrap:"wrap",justifyContent:"center"}}><a href="https://forms.gle/fYx3xKwEiaom4cTQA" target="_blank" rel="noopener noreferrer" className="btn br" style={{padding:"14px 32px",fontSize:13}}>Register a Team</a><a href="https://forms.gle/fYx3xKwEiaom4cTQA" target="_blank" rel="noopener noreferrer" className="btn by" style={{padding:"14px 32px",fontSize:13}}>Sponsor the Event</a></div>
+      </div>
+    </div>
+    <div ref={fallRef} className="card reveal" style={{overflow:"hidden",marginBottom:24}}>
+      <div className="golf-stripe" style={{height:4,background:"linear-gradient(90deg,var(--y),var(--r),var(--y))"}}/>
+      <div className="es" style={{display:"grid",gridTemplateColumns:"1fr 1fr"}}><div style={{padding:"28px 24px",borderRight:"1px solid var(--bd)"}}><div className="tag">Fall Event</div><h3 className="hd" style={{fontSize:24,marginBottom:4}}>SOCCTOBER FEST 5V5 TOURNAMENT</h3><div style={{fontSize:13,fontWeight:700,color:"var(--tm)",marginBottom:14}}>Sponsored by Burley Oak Brewery</div><p style={{color:"var(--tm)",fontSize:13,lineHeight:1.7,marginBottom:16}}>5v5 soccer tournament benefiting youth sports scholarships.</p><div style={{display:"flex",gap:8,flexWrap:"wrap"}}><span className="btn" style={{padding:"9px 20px",fontSize:12,background:"#e0e0e0",color:"#888",cursor:"default"}}>Registration Coming Soon</span><span className="btn" style={{padding:"9px 20px",fontSize:12,background:"#e0e0e0",color:"#888",cursor:"default"}}>Sponsorship Details Coming Soon</span></div></div><div style={{padding:"28px 24px",display:"flex",flexDirection:"column",justifyContent:"center",gap:12}}>{[{l:"Date",v:"October 2026"},{l:"Location",v:"Northern Worcester Athletic Complex"},{l:"City",v:"Berlin, Maryland"}].map((d,i)=><div key={i}><div className="fl">{d.l}</div><div style={{fontSize:14,fontWeight:600}}>{d.v}</div></div>)}</div></div>
+    </div>
+  </div>;
+}
 
-function About(){return <div className="c" style={{paddingTop:8,paddingBottom:56}}><div style={{background:"var(--dark)",position:"relative",overflow:"hidden",marginLeft:"calc(50% - 50vw)",marginRight:"calc(50% - 50vw)",marginTop:-8,marginBottom:40}}><div style={{position:"absolute",inset:0,background:"radial-gradient(ellipse 70% 70% at 75% 30%,rgba(255,0,36,.12) 0%,transparent 60%),radial-gradient(ellipse 50% 50% at 20% 80%,rgba(255,242,0,.06) 0%,transparent 50%)"}}/><div style={{maxWidth:1200,margin:"0 auto",padding:"44px 16px 52px",position:"relative",zIndex:1}}><div className="hg" style={{display:"grid",gridTemplateColumns:"1fr auto",gap:40,alignItems:"center"}}><div><div style={{fontSize:11,fontWeight:700,color:"var(--y)",letterSpacing:3,textTransform:"uppercase",marginBottom:14}}>About Us</div><h1 className="hd htl" style={{fontSize:46,marginBottom:14,maxWidth:560,color:"#fff",lineHeight:1.05}}>ABOUT <span style={{color:"var(--y)"}}>DELMARVA BLAST</span></h1><p style={{color:"rgba(255,255,255,.65)",fontSize:16,lineHeight:1.7,marginBottom:18,maxWidth:520}}>A 501(c)(3) nonprofit founded in 2018 on a simple belief: every child deserves the opportunity to participate in youth sports, regardless of financial circumstances.</p><div className="hero-logo-mobile" style={{display:"none"}}><img src={LOGO} alt="Delmarva Blast" style={{width:140,height:140,objectFit:"contain",filter:"drop-shadow(0 6px 24px rgba(255,0,36,.25))",display:"block",margin:"0 auto 20px"}}/></div><div style={{color:"rgba(255,255,255,.45)",fontSize:11}}>501(c)(3) Nonprofit Organization</div></div><div className="hero-logo" style={{flexShrink:0,position:"relative",width:220,height:220,display:"flex",alignItems:"center",justifyContent:"center"}}><div style={{position:"absolute",inset:0,borderRadius:"50%",background:"radial-gradient(circle,rgba(255,0,36,.18) 0%,rgba(255,242,0,.08) 40%,transparent 70%)",filter:"blur(30px)"}}/><img src={LOGO} alt="Delmarva Blast" style={{position:"relative",width:200,height:200,objectFit:"contain",filter:"drop-shadow(0 6px 30px rgba(255,0,36,.25)) drop-shadow(0 4px 15px rgba(0,0,0,.4))"}}/></div></div></div></div><div className="ag" style={{display:"grid",gridTemplateColumns:"1fr 2fr",gap:36,marginBottom:48}}><div><div className="card" style={{padding:24,textAlign:"center",marginBottom:12}}><div style={{width:56,height:56,borderRadius:"50%",background:"var(--rl)",margin:"0 auto 10px",display:"flex",alignItems:"center",justifyContent:"center"}}><span style={{fontSize:20,fontWeight:800,color:"var(--r)",fontFamily:hf}}>RB</span></div><div style={{fontSize:16,fontWeight:800,fontFamily:hf,textTransform:"uppercase"}}>Rusty Brown</div><div style={{color:"var(--r)",fontSize:10,fontWeight:700,letterSpacing:2,marginBottom:12}}>EXECUTIVE DIRECTOR</div><div style={{color:"var(--td)",fontSize:13,lineHeight:1.8}}>coachrusty@outlook.com<br/>(410) 713-8174</div></div><div className="card" style={{padding:18}}><div style={{fontSize:11,fontWeight:700,color:"var(--r)",letterSpacing:1.5,marginBottom:8}}>BOARD</div>{[{n:"Rusty Brown",r:"Executive Director"},{n:"Brent Garrison",r:"Vice President"},{n:"Leroy Laroque",r:"Treasurer"}].map((b,i)=><div key={i} style={{paddingBottom:i<2?6:0,marginBottom:i<2?6:0,borderBottom:i<2?"1px solid var(--bd)":"none"}}><div style={{fontWeight:700,fontSize:13}}>{b.n}</div><div style={{fontSize:11,color:"var(--td)"}}>{b.r}</div></div>)}</div></div><div style={{fontSize:15,color:"var(--tm)",lineHeight:1.85}}><p style={{marginBottom:14}}>The Delmarva Blast Youth Sports Foundation, Inc. is a 501(c)(3) nonprofit providing financial assistance and scholarship opportunities for youth athletes across the Delmarva Peninsula.</p><p style={{marginBottom:14}}>Founded in 2018 on a simple belief: every child deserves the opportunity to participate in youth sports regardless of financial circumstances.</p><p style={{marginBottom:14}}>Today the foundation provides scholarship assistance to athletes in recreational and competitive sports across Delaware, Maryland, and Virginia's Eastern Shore.</p><p style={{margin:0}}>Supporting soccer, baseball, basketball, football, lacrosse, field hockey, softball, wrestling, track and field, and more. Financial barriers should never stand in the way.</p></div></div>
-<div className="card" style={{padding:28,marginBottom:24}}><div style={{textAlign:"center",marginBottom:24}}><h2 className="hd" style={{fontSize:24}}>FINANCIAL STEWARDSHIP</h2></div><div className="g3" style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:12}}>{[{p:"70-75%",l:"Programs",d:"Scholarships and grants"},{p:"10-15%",l:"Admin",d:"Operations"},{p:"10-15%",l:"Fundraising",d:"Events and outreach"}].map((a,i)=><div key={i} style={{padding:16,background:"var(--bgA)",borderRadius:8,borderTop:"3px solid var(--r)",textAlign:"center"}}><div style={{fontSize:28,fontWeight:800,color:"var(--r)",fontFamily:hf}}>{a.p}</div><div style={{fontSize:12,fontWeight:700,marginBottom:2}}>{a.l}</div><div style={{fontSize:11,color:"var(--td)"}}>{a.d}</div></div>)}</div></div>
-<div style={{marginBottom:24}}><div className="tag">Impact</div><div className="al"/><h2 className="hd" style={{fontSize:24,marginBottom:16}}>REAL FAMILIES. REAL IMPACT.</h2><div style={{display:"flex",flexDirection:"column",gap:14}}>{STR.map((s,i)=><div key={i} className="card sg" style={{padding:24,display:"grid",gridTemplateColumns:i%2===0?"2fr 1fr":"1fr 2fr",gap:20,alignItems:"center"}}>{i%2!==0&&<div className="sa" style={{textAlign:"center"}}><div style={{fontSize:16,fontWeight:800,color:"var(--r)",fontFamily:hf,letterSpacing:1,textTransform:"uppercase"}}>{s.sp}</div></div>}<div><div style={{fontSize:24,color:"var(--tf)",fontFamily:"Georgia,serif",marginBottom:6}}>"</div><p style={{fontSize:14,color:"var(--tm)",lineHeight:1.8,marginBottom:10,fontStyle:"italic"}}>{s.q}</p><div style={{borderTop:"1px solid var(--bd)",paddingTop:8}}><div style={{fontSize:13,fontWeight:700}}>{s.name}</div><div style={{fontSize:11,color:"var(--td)"}}>{s.loc}</div></div></div>{i%2===0&&<div className="sa" style={{textAlign:"center"}}><div style={{fontSize:16,fontWeight:800,color:"var(--r)",fontFamily:hf,letterSpacing:1,textTransform:"uppercase"}}>{s.sp}</div></div>}</div>)}</div></div>
-<div style={{background:"var(--dark)",borderRadius:10,padding:"36px 28px",textAlign:"center"}}><h3 className="hd" style={{fontSize:22,color:"#fff",marginBottom:8}}>QUESTIONS?</h3><a href="mailto:coachrusty@outlook.com" className="btn br">Get in Touch</a><Tax/></div></div>}
+function Donate(){
+  const tilesRef=useReveal();
+  const ctaRef=useReveal();
+  return <div className="c" style={{paddingTop:8,paddingBottom:56}}>
+    <PageHero eyebrow="Get Involved / Donate" title="SUPPORT AN" titleHi="ATHLETE" subtitle="Every dollar goes toward helping a child play. Small awards, smart allocation, big impact across Delaware, Maryland, and Virginia's Eastern Shore."/>
+    <div ref={tilesRef} className="dg reveal" style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:14,marginBottom:32}}>{[{a:"$25",l:"Hit the Field"},{a:"$50",l:"First Whistle"},{a:"$100",l:"Gear Them Up"},{a:"$175",l:"Join the Team"},{a:"$250",l:"All-Star Support"},{a:"$500+",l:"MVP Impact"}].map((d,i)=><div key={i} className="card cc dcard" style={{padding:20,textAlign:"center"}}><div style={{fontSize:28,fontWeight:800,color:"var(--r)",fontFamily:hf,marginBottom:3}}>{d.a}</div><div style={{fontSize:12,fontWeight:700}}>{d.l}</div></div>)}</div>
+    <div ref={ctaRef} className="cta-box reveal" style={{background:"var(--dark)",borderRadius:10,padding:"40px 32px",textAlign:"center",marginBottom:24,position:"relative",overflow:"hidden"}}>
+      <h3 className="hd" style={{fontSize:24,marginBottom:8,color:"#fff"}}>READY TO DONATE?</h3>
+      <p style={{color:"rgba(255,255,255,.55)",fontSize:13,marginBottom:20}}>Secure online payment powered by Stripe.</p>
+      <a href="https://buy.stripe.com/cNi00j6Ndd9q9yHez93VC01" target="_blank" rel="noopener noreferrer" className="btn br" style={{padding:"12px 32px"}}>Donate Now</a>
+      <div style={{color:"rgba(255,255,255,.45)",fontSize:11,marginTop:10}}>Contributions may be tax deductible. Consult your tax advisor.</div>
+    </div>
+    <div className="card" style={{marginBottom:16,padding:"18px 22px",display:"flex",alignItems:"center",gap:20,flexWrap:"wrap"}}><div style={{flex:"0 0 auto"}}><div style={{fontSize:11,fontWeight:700,color:"var(--r)",letterSpacing:2,textTransform:"uppercase",marginBottom:2}}>Pay by Check</div><div style={{fontSize:14,fontWeight:700}}>Alternate Option</div></div><div style={{flex:"1 1 auto",minWidth:220,fontSize:13,color:"var(--tm)",lineHeight:1.6}}>Payable to <strong style={{color:"var(--text)"}}>Delmarva Blast</strong><br/>Mail to <strong style={{color:"var(--text)"}}>PO Box 3368 Ocean City, MD 21842</strong></div></div>
+    <div className="card" style={{padding:20}}><h4 style={{fontSize:13,fontWeight:700,color:"var(--r)",marginBottom:8}}>Transparency</h4><p style={{color:"var(--tm)",fontSize:13,lineHeight:1.7}}>70-75% to scholarships. 10-15% administration. 10-15% fundraising.</p></div>
+  </div>;
+}
 
-function App(){const[page,setPage]=useState("home");const go=useCallback(p=>{setPage(p);window.scrollTo({top:0})},[]);return <div><Nav page={page} go={go}/>{page==="home"&&<Home go={go}/>}{page==="scholarships"&&<Scholarships go={go}/>}{page==="events"&&<Events go={go}/>}{page==="donate"&&<Donate/>}{page==="sponsors"&&<Sponsors/>}{page==="about"&&<About/>}<Strip go={go}/><Foot go={go}/></div>}
+function Sponsors(){
+  const tiersRef=useReveal();
+  const bronzeRef=useReveal();
+  const ctaRef=useReveal();
+  return <div className="c" style={{paddingTop:8,paddingBottom:56}}>
+    <PageHero eyebrow="Get Involved / Sponsorships" title="BUSINESS" titleHi="SPONSORSHIPS" subtitle="Fuel the game for the next generation while putting your business front and center with families, athletes, and events throughout the Delmarva region."/>
+
+    <div style={{marginBottom:48}}>
+      <h2 className="hd" style={{fontSize:24,marginBottom:6}}>BUSINESS SPONSORSHIP PACKAGES</h2>
+      <p style={{color:"var(--td)",fontSize:13,marginBottom:20}}>Business sponsorship packages can be tailored to meet your business goals and needs.</p>
+      <div ref={tiersRef} className="tg reveal" style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:14,marginBottom:14}}>
+        {[{name:"PLATINUM",range:"$10,000",color:"#e5e4e2"},{name:"GOLD",range:"$5,000",pop:true,color:"var(--y)"},{name:"SILVER",range:"$1,000",color:"#c0c0c0"}].map((t,i)=>(
+          <div key={i} className="card cc" style={{padding:24,position:"relative",display:"flex",flexDirection:"column",textAlign:"center",border:t.pop?"2px solid var(--r)":"1px solid var(--bd)",overflow:"hidden"}}>
+            {t.pop&&<div className="golf-stripe" style={{position:"absolute",top:0,left:0,right:0,height:4,borderRadius:"10px 10px 0 0"}}/>}
+            <div style={{fontSize:11,fontWeight:700,color:"var(--r)",letterSpacing:2,marginBottom:8}}>{t.name}</div>
+            <div style={{fontSize:32,fontWeight:800,fontFamily:hf,marginBottom:8}}>{t.range}</div>
+            <div style={{fontSize:13,color:"var(--td)"}}>Benefits details coming soon</div>
+          </div>))}
+      </div>
+      <div ref={bronzeRef} className="schg reveal" style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:14}}>
+        {[{name:"BRONZE",range:"$500",color:"#cd7f32"},{name:"CUSTOM PACKAGE",range:"Contact Us",color:"var(--r)"}].map((t,i)=>(
+          <div key={i} className="card cc" style={{padding:24,position:"relative",display:"flex",flexDirection:"column",textAlign:"center"}}>
+            <div style={{fontSize:11,fontWeight:700,color:"var(--r)",letterSpacing:2,marginBottom:8}}>{t.name}</div>
+            <div style={{fontSize:28,fontWeight:800,fontFamily:hf,marginBottom:8}}>{t.range}</div>
+            <div style={{fontSize:13,color:"var(--td)"}}>{i===1?"Let's build something together":"Benefits details coming soon"}</div>
+          </div>))}
+      </div>
+    </div>
+
+    <div ref={ctaRef} className="cta-box reveal" style={{background:"var(--dark)",borderRadius:10,padding:"40px 32px",textAlign:"center",marginBottom:0,position:"relative",overflow:"hidden"}}>
+      <h3 className="hd" style={{fontSize:24,color:"#fff",marginBottom:8}}>READY TO SPONSOR?</h3>
+      <p style={{color:"rgba(255,255,255,.55)",fontSize:13,marginBottom:20,maxWidth:420,marginLeft:"auto",marginRight:"auto"}}>Your sponsorship puts your business in front of families, athletes, and communities while helping kids play the sports they love.</p>
+      <a href="mailto:coachrusty@outlook.com?subject=Sponsorship%20Inquiry" className="btn br" style={{padding:"12px 32px"}}>Contact Rusty Brown</a>
+      <div style={{color:"rgba(255,255,255,.35)",fontSize:11,marginTop:10}}>coachrusty@outlook.com | (410) 713-8174</div>
+      <div style={{marginTop:16,fontSize:12,color:"rgba(255,255,255,.65)",lineHeight:1.6}}><span style={{color:"var(--y)",fontWeight:700,letterSpacing:1.5,textTransform:"uppercase",fontSize:11,marginRight:8}}>Pay by Check:</span>Payable to <strong style={{color:"#fff"}}>Delmarva Blast</strong> &bull; <strong style={{color:"#fff"}}>PO Box 3368 Ocean City, MD 21842</strong></div>
+      <div style={{color:"rgba(255,255,255,.45)",fontSize:11,marginTop:16}}>Contributions may be tax deductible. Consult your tax advisor.</div>
+    </div>
+
+    <div style={{background:"var(--bgA)",borderRadius:10,padding:"20px 24px",marginTop:24}}>
+      <div style={{display:"flex",alignItems:"center",justifyContent:"center",gap:12,marginBottom:14,flexWrap:"wrap"}}><div style={{fontSize:10,fontWeight:700,color:"var(--r)",letterSpacing:2,textTransform:"uppercase"}}>Transparency</div><h3 className="hd" style={{fontSize:16,margin:0}}>WHERE YOUR MONEY GOES</h3></div>
+      <div className="g3" style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:10}}>
+        {[{p:"70-75%",l:"Direct to Athletes"},{p:"10-15%",l:"Operations"},{p:"10-15%",l:"Growth"}].map((a,i)=>(
+          <div key={i} style={{textAlign:"center",padding:"10px 8px",background:"#fff",borderRadius:6,borderTop:"2px solid var(--r)",transition:"transform .3s"}} onMouseEnter={e=>e.currentTarget.style.transform="translateY(-2px)"} onMouseLeave={e=>e.currentTarget.style.transform="translateY(0)"}>
+            <div style={{fontSize:20,fontWeight:800,color:"var(--r)",fontFamily:hf,lineHeight:1}}>{a.p}</div>
+            <div style={{fontSize:11,fontWeight:700,marginTop:3}}>{a.l}</div>
+          </div>))}
+      </div>
+    </div>
+  </div>;
+}
+
+function About(){
+  const mainRef=useReveal();
+  const finRef=useReveal();
+  const storiesHeadRef=useReveal();
+  const storyRefs=[useReveal(),useReveal(),useReveal(),useReveal()];
+  const ctaRef=useReveal();
+  return <div className="c" style={{paddingTop:8,paddingBottom:56}}>
+    <PageHero eyebrow="About Us" title="ABOUT" titleHi="DELMARVA BLAST" subtitle="A 501(c)(3) nonprofit founded in 2018 on a simple belief: every child deserves the opportunity to participate in youth sports, regardless of financial circumstances."/>
+    <div ref={mainRef} className="ag reveal" style={{display:"grid",gridTemplateColumns:"1fr 2fr",gap:36,marginBottom:48}}>
+      <div>
+        <div className="card" style={{padding:24,textAlign:"center",marginBottom:12,transition:"transform .3s"}} onMouseEnter={e=>e.currentTarget.style.transform="translateY(-3px)"} onMouseLeave={e=>e.currentTarget.style.transform="translateY(0)"}>
+          <div style={{width:56,height:56,borderRadius:"50%",background:"var(--rl)",margin:"0 auto 10px",display:"flex",alignItems:"center",justifyContent:"center",position:"relative"}}>
+            <span style={{fontSize:20,fontWeight:800,color:"var(--r)",fontFamily:hf,position:"relative",zIndex:1}}>RB</span>
+            <div style={{position:"absolute",inset:0,borderRadius:"50%",border:"1.5px solid var(--r)",animation:"glowPulse 2.5s ease-in-out infinite",opacity:.4}}/>
+          </div>
+          <div style={{fontSize:16,fontWeight:800,fontFamily:hf,textTransform:"uppercase"}}>Rusty Brown</div>
+          <div style={{color:"var(--r)",fontSize:10,fontWeight:700,letterSpacing:2,marginBottom:12}}>EXECUTIVE DIRECTOR</div>
+          <div style={{color:"var(--td)",fontSize:13,lineHeight:1.8}}>coachrusty@outlook.com<br/>(410) 713-8174</div>
+        </div>
+        <div className="card" style={{padding:18}}><div style={{fontSize:11,fontWeight:700,color:"var(--r)",letterSpacing:1.5,marginBottom:8}}>BOARD</div>{[{n:"Rusty Brown",r:"Executive Director"},{n:"Brent Garrison",r:"Vice President"},{n:"Leroy Laroque",r:"Treasurer"}].map((b,i)=><div key={i} style={{paddingBottom:i<2?6:0,marginBottom:i<2?6:0,borderBottom:i<2?"1px solid var(--bd)":"none"}}><div style={{fontWeight:700,fontSize:13}}>{b.n}</div><div style={{fontSize:11,color:"var(--td)"}}>{b.r}</div></div>)}</div>
+      </div>
+      <div style={{fontSize:15,color:"var(--tm)",lineHeight:1.85}}>
+        <p style={{marginBottom:14}}>The Delmarva Blast Youth Sports Foundation, Inc. is a 501(c)(3) nonprofit providing financial assistance and scholarship opportunities for youth athletes across the Delmarva Peninsula.</p>
+        <p style={{marginBottom:14}}>Founded in 2018 on a simple belief: every child deserves the opportunity to participate in youth sports regardless of financial circumstances.</p>
+        <p style={{marginBottom:14}}>Today the foundation provides scholarship assistance to athletes in recreational and competitive sports across Delaware, Maryland, and Virginia's Eastern Shore.</p>
+        <p style={{margin:0}}>Supporting soccer, baseball, basketball, football, lacrosse, field hockey, softball, wrestling, track and field, and more. Financial barriers should never stand in the way.</p>
+      </div>
+    </div>
+    <div ref={finRef} className="card reveal" style={{padding:28,marginBottom:24}}>
+      <div style={{textAlign:"center",marginBottom:24}}><h2 className="hd" style={{fontSize:24}}>FINANCIAL STEWARDSHIP</h2></div>
+      <div className="g3" style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:12}}>
+        {[{p:"70-75%",l:"Programs",d:"Scholarships and grants"},{p:"10-15%",l:"Admin",d:"Operations"},{p:"10-15%",l:"Fundraising",d:"Events and outreach"}].map((a,i)=>(
+          <div key={i} className="stat-card" style={{padding:16,background:"var(--bgA)",borderRadius:8,borderTop:"3px solid var(--r)",textAlign:"center",transition:"transform .3s"}} onMouseEnter={e=>e.currentTarget.style.transform="translateY(-3px)"} onMouseLeave={e=>e.currentTarget.style.transform="translateY(0)"}>
+            <div style={{fontSize:28,fontWeight:800,color:"var(--r)",fontFamily:hf}}>{a.p}</div>
+            <div style={{fontSize:12,fontWeight:700,marginBottom:2}}>{a.l}</div>
+            <div style={{fontSize:11,color:"var(--td)"}}>{a.d}</div>
+          </div>))}
+      </div>
+    </div>
+    <div ref={storiesHeadRef} className="reveal" style={{marginBottom:24}}>
+      <div className="tag">Impact</div><div className="al"/><h2 className="hd" style={{fontSize:24,marginBottom:16}}>REAL FAMILIES. REAL IMPACT.</h2>
+      <div style={{display:"flex",flexDirection:"column",gap:14}}>
+        {STR.map((s,i)=><div key={i} ref={storyRefs[i]} className={"card sg reveal reveal-d"+((i%4)+1)} style={{padding:24,display:"grid",gridTemplateColumns:i%2===0?"2fr 1fr":"1fr 2fr",gap:20,alignItems:"center",transition:"transform .3s, box-shadow .3s"}} onMouseEnter={e=>{e.currentTarget.style.transform="translateY(-3px)";e.currentTarget.style.boxShadow="0 10px 30px rgba(0,0,0,.07)"}} onMouseLeave={e=>{e.currentTarget.style.transform="translateY(0)";e.currentTarget.style.boxShadow="none"}}>
+          {i%2!==0&&<div className="sa" style={{textAlign:"center"}}><div style={{fontSize:16,fontWeight:800,color:"var(--r)",fontFamily:hf,letterSpacing:1,textTransform:"uppercase"}}>{s.sp}</div></div>}
+          <div>
+            <div style={{fontSize:24,color:"var(--tf)",fontFamily:"Georgia,serif",marginBottom:6}}>"</div>
+            <p style={{fontSize:14,color:"var(--tm)",lineHeight:1.8,marginBottom:10,fontStyle:"italic"}}>{s.q}</p>
+            <div style={{borderTop:"1px solid var(--bd)",paddingTop:8}}><div style={{fontSize:13,fontWeight:700}}>{s.name}</div><div style={{fontSize:11,color:"var(--td)"}}>{s.loc}</div></div>
+          </div>
+          {i%2===0&&<div className="sa" style={{textAlign:"center"}}><div style={{fontSize:16,fontWeight:800,color:"var(--r)",fontFamily:hf,letterSpacing:1,textTransform:"uppercase"}}>{s.sp}</div></div>}
+        </div>)}
+      </div>
+    </div>
+    <div ref={ctaRef} className="cta-box reveal" style={{background:"var(--dark)",borderRadius:10,padding:"36px 28px",textAlign:"center",position:"relative",overflow:"hidden"}}>
+      <h3 className="hd" style={{fontSize:22,color:"#fff",marginBottom:8}}>QUESTIONS?</h3>
+      <a href="mailto:coachrusty@outlook.com" className="btn br">Get in Touch</a>
+      <Tax/>
+    </div>
+  </div>;
+}
+
+function App(){
+  const[page,setPage]=useState("home");
+  const go=useCallback(p=>{setPage(p);window.scrollTo({top:0})},[]);
+  return <div>
+    <Nav page={page} go={go}/>
+    {page==="home"&&<Home go={go}/>}
+    {page==="scholarships"&&<Scholarships go={go}/>}
+    {page==="events"&&<Events go={go}/>}
+    {page==="donate"&&<Donate/>}
+    {page==="sponsors"&&<Sponsors/>}
+    {page==="about"&&<About/>}
+    <Strip go={go}/>
+    <Foot go={go}/>
+  </div>;
+}
 ReactDOM.createRoot(document.getElementById("root")).render(<App/>);
 </script></body></html>
